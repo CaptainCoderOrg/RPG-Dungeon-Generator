@@ -1,0 +1,18 @@
+{
+    "name": "DungeoneeringKit",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8ff37326aac21af44a005a6a990ed9d0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

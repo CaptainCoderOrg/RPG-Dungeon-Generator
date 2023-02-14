@@ -1,0 +1,6 @@
+.unity-text-field {
+    -unity-font: url('project://database/Assets/Fonts/ConsolaMono-Book.ttf?fileID=12800000&guid=cc9a44fe1db7be14a8d7b1bda38e6bf4&type=3#ConsolaMono-Book');
+    font-size: 14px;
+    -unity-font-style: normal;
+    white-space: nowrap;
+}

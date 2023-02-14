@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor%20Scripts/GridEditor/Styles.uss?fileID=7433441132597879392&amp;guid=613ff92099b7f4747bdd5d159a3fa19a&amp;type=3#Styles" />
+    <ui:GroupBox tooltip="This is a tooltip" name="ControlButtons" style="overflow: visible; flex-direction: row;">
+        <ui:Button text="Save" display-tooltip-when-elided="true" name="Save" />
+        <ui:Button text="Load" display-tooltip-when-elided="true" name="Load" />
+        <ui:Button text="Add to Scene" display-tooltip-when-elided="true" name="AddToScene" />
+    </ui:GroupBox>
+    <ui:TextField picking-mode="Ignore" text="#####&#10;#...#&#10;#...#&#10;#...#&#10;#####" name="MapData" tooltip="This is a tooltip" multiline="true" style="height: 177px;" />
+    <ui:VisualElement name="ObjectRefContainer" />
+</ui:UXML>

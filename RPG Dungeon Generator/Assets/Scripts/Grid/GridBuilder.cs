@@ -4,7 +4,6 @@ namespace CaptainCoder.Dungeoneering
 {
     public class GridBuilder
     {
-        const int CellSize = 5;
         private GridCellDatabase _database;        
 
         public GridBuilder(GridCellDatabase database)
@@ -22,7 +21,7 @@ namespace CaptainCoder.Dungeoneering
                     char ch = rows[r][c];
                     GameObject obj = _database.Instantiate(ch, container);
                     obj.name = $"({r}, {c}) - {obj.name}";
-                    obj.transform.localPosition = new Vector3(r * CellSize, 0, c * CellSize);
+                    obj.transform.localPosition = new Vector3(r * Grid.CellSize, 0, c * Grid.CellSize);
                 }
             }
         }

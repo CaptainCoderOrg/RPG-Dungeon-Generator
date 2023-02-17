@@ -15,7 +15,19 @@ namespace CaptainCoder.Dungeoneering
             }
         }
 
-        public static void Enable() => _userInput.Movement.Enable();
-        public static void Disable() => _userInput.Movement.Disable();
+        public static UserInputs.CameraActions CameraActions {
+            get
+            {
+                if(_userInput == null)
+                {
+                    _userInput = new UserInputs();
+                    _userInput.Enable();
+                }
+                return _userInput.Camera;
+            }
+        }
+
+        public static void Enable() => _userInput.Enable();
+        public static void Disable() => _userInput.Disable();
     }
 }

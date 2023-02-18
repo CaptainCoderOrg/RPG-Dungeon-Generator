@@ -29,11 +29,11 @@ namespace CaptainCoder.Dungeoneering
         private void BuildWalls(string[] rows, Transform container)
         {
             List<GameObject> allWalls = new();
+            HashSet<(int, int)> wallEnds = new();
             for (int r = 0; r < rows.Length; r++)
             {
                 // On even rows, we care about the odd columns
                 // On odd rows, we care about the even columns
-
                 int startColumn = r % 2 == 0 ? 1 : 0;
                 bool isNorthSouth = r % 2 == 1;
                 for (int c = startColumn; c < rows[r].Length; c += 2)
@@ -42,11 +42,17 @@ namespace CaptainCoder.Dungeoneering
                     if (ch == ' ') { continue; }
                     GameObject obj = _database.InstantiateWall(ch, isNorthSouth, container);
                     allWalls.Add(obj);
+
                     float row = (r * .5f);
                     float col = (c * .5f);
                     obj.name = $"({row}, {col}) - {obj.name}";
                     obj.transform.localPosition = new Vector3(row * Grid.CellSize, 0, col * Grid.CellSize);
 
+                    WallTileEndDetector[] ends = obj.GetComponentsInChildren<WallTileEndDetector>();
+                    foreach (WallTileEndDetector end in ends)
+                    {
+                        end.DetectOtherEnds();
+                    }
                 }
             }
             // GameObject merged = MergeMeshes(allWalls, _database.WallMaterial);

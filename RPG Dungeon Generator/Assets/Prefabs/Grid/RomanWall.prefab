@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 3336548953437278187}
   - component: {fileID: 7629467187747364504}
   - component: {fileID: 5750872320737138221}
+  - component: {fileID: 6304108246342513159}
   m_Layer: 0
   m_Name: Bit1
   m_TagString: Untagged
@@ -655,7 +656,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1797
+  m_VersionIndex: 1800
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -764,6 +765,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 6c99e05bfb931f84cad42d823eecf1c4, type: 2}
+--- !u!114 &6304108246342513159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867591787626689667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06752be8f637a419949f4eaf11f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5446947339979829144
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +792,7 @@ GameObject:
   - component: {fileID: 3268000015429706278}
   - component: {fileID: 5890659824212152201}
   - component: {fileID: 1572919262759422130}
+  - component: {fileID: 4054109662309493538}
   m_Layer: 0
   m_Name: Bit0
   m_TagString: Untagged
@@ -1122,6 +1136,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 6c99e05bfb931f84cad42d823eecf1c4, type: 2}
+--- !u!114 &4054109662309493538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5446947339979829144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06752be8f637a419949f4eaf11f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6434631049774241229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1163,7 @@ GameObject:
   - component: {fileID: 7457601374809076586}
   - component: {fileID: 5342977027205478635}
   - component: {fileID: 6272442909119395583}
+  - component: {fileID: 4527492373038641883}
   m_Layer: 0
   m_Name: Bit0
   m_TagString: Untagged
@@ -1371,7 +1398,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1805
+  m_VersionIndex: 1808
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1480,6 +1507,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 6c99e05bfb931f84cad42d823eecf1c4, type: 2}
+--- !u!114 &4527492373038641883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434631049774241229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06752be8f637a419949f4eaf11f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7499364677843179078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1256440073604323538
 Transform:
   m_ObjectHideFlags: 0
@@ -1921,6 +1960,7 @@ GameObject:
   - component: {fileID: 4040897414249176489}
   - component: {fileID: 8243391422686171183}
   - component: {fileID: 5480113554838596227}
+  - component: {fileID: 1222679794008834811}
   m_Layer: 0
   m_Name: Bit1
   m_TagString: Untagged
@@ -2264,3 +2304,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _material: {fileID: 2100000, guid: 6c99e05bfb931f84cad42d823eecf1c4, type: 2}
+--- !u!114 &1222679794008834811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9081625277748779570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff06752be8f637a419949f4eaf11f74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

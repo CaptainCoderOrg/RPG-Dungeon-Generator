@@ -49,8 +49,9 @@ MonoBehaviour:
     <Value>k__BackingField: {fileID: 2335308055764904564, guid: 638b57ba64bb3a042b8aa544e38a4b1e, type: 3}
   _wallEntries:
   - <Key>k__BackingField: 124
-    <Value>k__BackingField: {fileID: 2510479742828675968, guid: d88739366cd60404e9637de2b0643705, type: 3}
+    <Value>k__BackingField: {fileID: 7744616278776981774, guid: d88739366cd60404e9637de2b0643705, type: 3}
   - <Key>k__BackingField: 43
-    <Value>k__BackingField: {fileID: 2510479742828675968, guid: d88739366cd60404e9637de2b0643705, type: 3}
+    <Value>k__BackingField: {fileID: 7744616278776981774, guid: d88739366cd60404e9637de2b0643705, type: 3}
   - <Key>k__BackingField: 45
-    <Value>k__BackingField: {fileID: 2510479742828675968, guid: d88739366cd60404e9637de2b0643705, type: 3}
+    <Value>k__BackingField: {fileID: 7744616278776981774, guid: d88739366cd60404e9637de2b0643705, type: 3}
+  <WallMaterial>k__BackingField: {fileID: 2100000, guid: 6c99e05bfb931f84cad42d823eecf1c4, type: 2}

@@ -6,7 +6,7 @@ using UnityEditor.UIElements;
 namespace CaptainCoder.Dungeoneering
 {
     public class GridEditor : EditorWindow
-    {
+    {   
         [MenuItem("Dungeoneering Kit/Grid Editor")]
         public static void ShowExample()
         {
@@ -31,9 +31,7 @@ namespace CaptainCoder.Dungeoneering
             refContainer.Add(gridCellDatabase);
 
             var mapData = rootVisualElement.Q<TextField>("MapData");
-            var button = rootVisualElement.Q<Button>("AddToScene");
-
-            
+            var button = rootVisualElement.Q<Button>("AddToScene");            
             
             // button.clicked += () => ShowValue(gridCellDatabase);
             button.clicked += () => AddToScene((GridCellDatabase)gridCellDatabase.value, mapData.text, (Transform)gridTarget.value);

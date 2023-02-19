@@ -9,5 +9,6 @@ namespace CaptainCoder.Dungeoneering
     {
         public static Facing RotateClockwise(this Facing facing) => (Facing)(((int)facing + 1) % 4);
         public static Facing RotateCounterClockwise(this Facing facing) => (Facing)(((int)facing + 3) % 4);
+        public static Facing Rotate180(this Facing facing) => (Facing)(((int)facing + 2) % 4);
     }
 }

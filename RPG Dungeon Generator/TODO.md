@@ -1,0 +1,1 @@
+* MapBuilder.MergeAt doesn't check for tile position conflicts

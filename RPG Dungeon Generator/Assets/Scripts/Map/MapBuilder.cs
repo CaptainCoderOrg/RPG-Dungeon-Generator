@@ -1,22 +1,69 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System;
 namespace CaptainCoder.Dungeoneering
 {
     public class MapBuilder
     {
-        private readonly Dictionary<Position, MutableTile> _tiles = new ();
-        private readonly Dictionary<Position, HashSet<Facing>> _walls = new ();
+        private readonly Dictionary<Position, MutableTile> _tiles = new();
+        private readonly Dictionary<Position, HashSet<Facing>> _walls = new();
+        // TODO: Priority Queue would be more efficient for _unconnectedPoints
+        // Property of Enqueue and Dequeue
+        // When you Enqueue (randomly specify the priority)
+        // Priority Queue is a fancy BinarySearchTree (actually a Heap data structure)
+        // O(logn) - for adding/removing to a priority queue
+        private readonly List<ConnectionPoint> _unconnectedPoints = new();
+        private readonly HashSet<ConnectionPoint> _connectionPoints = new();
+        public bool HasConnectionPoint => _unconnectedPoints.Count > 0;
+        public Random RNG { get; set; } = new Random();
+
+        public bool TryFindConnectionPoint(Facing dir, out ConnectionPoint connectAt)
+        {
+            connectAt = default;
+            var filtered = _unconnectedPoints
+                .Where(f => f.Direction == dir);
+            if (filtered.Count() == 0) { return false; }
+
+            connectAt = filtered
+                .OrderBy((f) => RNG.Next())
+                .First();
+            return true;
+        }
+
+        public MapBuilder AddConnectionPoint(ConnectionPoint point)
+        {
+            // TODO: Point should be on edge of map?
+            if (_connectionPoints.Contains(point)) { return this; }
+            _connectionPoints.Add(point);
+            _unconnectedPoints.Add(point);
+            return this;
+        }
+
+        public bool TryRemoveRandomConnectionPoint(out ConnectionPoint removed)
+        {
+            if (!HasConnectionPoint)
+            {
+                removed = default;
+                return false;
+            }
+            // TODO: Relatively inefficient design here (if speed becomes an issue consider priority queue)
+            int ix = RNG.Next(0, _unconnectedPoints.Count);
+            removed = _unconnectedPoints[ix];
+            _unconnectedPoints.RemoveAt(ix);
+            return true;
+        }
 
         public MapBuilder MergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
         {
+            // TODO: Check for conflicts in Map Merge
             Position connectionPosition = onBuilder.Position.Neighbor(onBuilder.Direction);
             foreach ((Position pos, MutableTile tile) in toMerge._tiles)
             {
                 Position newPos = pos;
                 newPos.X += connectionPosition.X + onMap.Position.X;
                 newPos.Y += connectionPosition.Y + onMap.Position.Y;
-                
+
                 //TODO Check for conflicts
                 _tiles[newPos] = tile;
             }
@@ -34,7 +81,7 @@ namespace CaptainCoder.Dungeoneering
         public MapBuilder AddWalls(Position position, params Facing[] facing) => AddWalls(position, facing.ToList());
         public MapBuilder AddWalls(Position position, IEnumerable<Facing> facings)
         {
-            foreach (Facing facing in facings) 
+            foreach (Facing facing in facings)
             {
                 AddWall(position, facing);
             }
@@ -49,10 +96,10 @@ namespace CaptainCoder.Dungeoneering
                 _walls[pos] = wallsAtPosition;
             }
             wallsAtPosition.Add(facing);
-            
+
             Position neighbor = pos.Neighbor(facing);
             AddNeighborWall(neighbor, facing.Rotate180());
-            
+
             return this;
         }
 
@@ -68,7 +115,7 @@ namespace CaptainCoder.Dungeoneering
             }
         }
 
-        
+
         private HashSet<Facing> NeighborWalls(Position p)
         {
             HashSet<Facing> walls = new();
@@ -102,13 +149,13 @@ namespace CaptainCoder.Dungeoneering
         public MapBuilder AddFloor(Position position)
         {
             Debug.Assert(!_tiles.ContainsKey(position), $"Floor already exists at position {position}.");
-            _tiles[position] = new ();
+            _tiles[position] = new();
             return this;
         }
 
         public IMap Build()
         {
-            List<(Position, ITile)> tiles = new ();
+            List<(Position, ITile)> tiles = new();
             foreach (Position pos in _tiles.Keys)
             {
                 MutableTile tile = _tiles[pos];

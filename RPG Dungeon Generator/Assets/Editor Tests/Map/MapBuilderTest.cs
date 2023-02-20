@@ -56,7 +56,7 @@ namespace CaptainCoder.Dungeoneering
             Assert.False(outOfBounds.IsPassable);
             Assert.True(outOfBounds.Walls.Contains(Facing.East));
 
-            (Position tl, Position br) = map.TileBounds();
+            (Position tl, Position br) = map.TileBounds;
             Assert.AreEqual(tl, new Position(0, 0));
             Assert.AreEqual(br, new Position(1, 1));
         }

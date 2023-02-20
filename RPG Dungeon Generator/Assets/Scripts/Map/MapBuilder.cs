@@ -92,6 +92,7 @@ namespace CaptainCoder.Dungeoneering
                 MutableTile tile = _tiles[pos];
                 HashSet<Facing> walls = _walls[pos];
                 tile._walls = walls;
+                tiles.Add((pos, tile));
             }
             return new Map(tiles);
         }

@@ -7,15 +7,19 @@ namespace CaptainCoder.Dungeoneering
     public class Map : IMap
     {
         private readonly Dictionary<Position, ITile> _tiles;
+        public (Position topLeft, Position bottomRight) TileBounds { get; }
+
+
 
         public Map(IEnumerable<(Position, ITile)> tiles)
         {
             _tiles = new Dictionary<Position, ITile>();
-            foreach((Position p, ITile t) in tiles)
+            foreach ((Position p, ITile t) in tiles)
             {
                 Debug.Assert(!_tiles.ContainsKey(p), $"Duplicate position detected {p}");
                 _tiles[p] = t;
             }
+            TileBounds = FindBounds();
         }
 
         public ITile TileAt(Position p)
@@ -40,20 +44,21 @@ namespace CaptainCoder.Dungeoneering
             return tile.Walls.Contains(wallDirection);
         }
 
-        public (Position topLeft, Position bottomRight) TileBounds()
+        private (Position, Position) FindBounds()
         {
             int minX = int.MaxValue;
             int maxX = int.MinValue;
             int minY = int.MaxValue;
             int maxY = int.MinValue;
-            foreach(Position p in _tiles.Keys)
+            foreach (Position p in _tiles.Keys)
             {
                 minX = Math.Min(minX, p.X);
                 maxX = Math.Max(maxX, p.X);
                 minY = Math.Min(minY, p.Y);
                 maxY = Math.Max(maxY, p.Y);
             }
-            return (new Position(minX, maxY), new Position(maxX, minY));
+            return (new Position(minX, minY), new Position(maxX, maxY));
         }
+
     }
 }

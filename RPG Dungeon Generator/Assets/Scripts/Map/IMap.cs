@@ -8,6 +8,6 @@ namespace CaptainCoder.Dungeoneering
         /// Returns the bounds of positions that could potentially have tiles.
         /// Any position outside of these bounds is guaranteed to not be passable.
         /// </summary>
-        public (Position topLeft, Position bottomRight) TileBounds();
+        public (Position topLeft, Position bottomRight) TileBounds { get; }
     }
 }

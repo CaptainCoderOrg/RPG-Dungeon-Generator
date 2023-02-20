@@ -1,8 +1,12 @@
+using System.Collections.Generic;
+
 namespace CaptainCoder.Dungeoneering
 {
     public interface IMap
     {
         public ITile TileAt(Position p);
+
+        public IEnumerable<(Position, ITile)> Tiles { get; }
 
         /// <summary>
         /// Returns the bounds of positions that could potentially have tiles.

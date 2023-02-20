@@ -29,7 +29,6 @@ namespace CaptainCoder.Dungeoneering
         private void BuildWalls(string[] rows, Transform container)
         {
             List<GameObject> allWalls = new();
-            HashSet<(int, int)> wallEnds = new();
             for (int r = 0; r < rows.Length; r++)
             {
                 // On even rows, we care about the odd columns

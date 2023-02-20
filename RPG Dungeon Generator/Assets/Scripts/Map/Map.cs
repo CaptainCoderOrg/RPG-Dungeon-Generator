@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CaptainCoder.Dungeoneering
 {
@@ -9,7 +10,16 @@ namespace CaptainCoder.Dungeoneering
         private readonly Dictionary<Position, ITile> _tiles;
         public (Position topLeft, Position bottomRight) TileBounds { get; }
 
-
+        public IEnumerable<(Position, ITile)> Tiles
+        {
+            get
+            {
+                foreach (KeyValuePair<Position, ITile> pair in _tiles)
+                {
+                    yield return (pair.Key, pair.Value);
+                }
+            }
+        }
 
         public Map(IEnumerable<(Position, ITile)> tiles)
         {

@@ -8,6 +8,29 @@ namespace CaptainCoder.Dungeoneering
         private readonly Dictionary<Position, MutableTile> _tiles = new ();
         private readonly Dictionary<Position, HashSet<Facing>> _walls = new ();
 
+        public MapBuilder MergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
+        {
+            Position connectionPosition = onBuilder.Position.Neighbor(onBuilder.Direction);
+            foreach ((Position pos, MutableTile tile) in toMerge._tiles)
+            {
+                Position newPos = pos;
+                newPos.X += connectionPosition.X + onMap.Position.X;
+                newPos.Y += connectionPosition.Y + onMap.Position.Y;
+                
+                //TODO Check for conflicts
+                _tiles[newPos] = tile;
+            }
+
+            foreach ((Position pos, HashSet<Facing> walls) in toMerge._walls)
+            {
+                Position newPos = pos;
+                newPos.X += connectionPosition.X + onMap.Position.X;
+                newPos.Y += connectionPosition.Y + onMap.Position.Y;
+                AddWalls(newPos, walls);
+            }
+            return this;
+        }
+
         public MapBuilder AddWalls(Position position, params Facing[] facing) => AddWalls(position, facing.ToList());
         public MapBuilder AddWalls(Position position, IEnumerable<Facing> facings)
         {
@@ -83,7 +106,6 @@ namespace CaptainCoder.Dungeoneering
             return this;
         }
 
-
         public IMap Build()
         {
             List<(Position, ITile)> tiles = new ();
@@ -101,9 +123,7 @@ namespace CaptainCoder.Dungeoneering
     class MutableTile : ITile
     {
         internal HashSet<Facing> _walls;
-
         public bool IsPassable => true;
-
         public HashSet<Facing> Walls => _walls.ToHashSet();
     }
 }

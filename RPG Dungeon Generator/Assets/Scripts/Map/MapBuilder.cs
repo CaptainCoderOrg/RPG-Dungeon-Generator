@@ -17,6 +17,7 @@ namespace CaptainCoder.Dungeoneering
         private readonly HashSet<ConnectionPoint> _connectionPoints = new();
         public bool HasConnectionPoint => _unconnectedPoints.Count > 0;
         public Random RNG { get; set; } = new Random();
+        public List<ConnectionPoint> UnconnectedPoints => _unconnectedPoints.ToList();
 
         public bool TryFindConnectionPoint(Facing dir, out ConnectionPoint connectAt)
         {
@@ -40,6 +41,11 @@ namespace CaptainCoder.Dungeoneering
             return this;
         }
 
+        /// <summary>
+        /// Attempts to remove a Random <see cref="ConnectionPoint"/>. If succesful, returns true
+        /// and <paramref name="removed"/> is set to the removed <see cref="ConnectionPoint"/>.
+        /// Othewise, returns false and the value of <paramref name="removed"/> is undefined.
+        /// </summary>
         public bool TryRemoveRandomConnectionPoint(out ConnectionPoint removed)
         {
             if (!HasConnectionPoint)
@@ -56,26 +62,52 @@ namespace CaptainCoder.Dungeoneering
 
         public MapBuilder MergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
         {
+            
             // TODO: Check for conflicts in Map Merge
             Position connectionPosition = onBuilder.Position.Neighbor(onBuilder.Direction);
+            Position offset = new(connectionPosition.X + onMap.Position.X, connectionPosition.Y + onMap.Position.Y);
+            MergeFloors(toMerge, offset);
+            MergeWalls(toMerge, offset);
+            MergeConnectionPoints(toMerge, offset, onMap);
+            // TODO: Consider ensuring toMerge contains onMap
+            return this;
+        }
+
+        private void MergeConnectionPoints(MapBuilder toMerge, Position offset, ConnectionPoint onMap)
+        {
+            foreach (ConnectionPoint point in toMerge._unconnectedPoints)
+            {
+                if (point.Equals(onMap)) { continue; }
+                Position newPos = point.Position;
+                newPos.X += offset.X;
+                newPos.Y += offset.Y;
+                ConnectionPoint newPoint = new(newPos, point.Direction);
+                AddConnectionPoint(newPoint);
+            }
+        }
+
+        private void MergeWalls(MapBuilder toMerge, Position offset)
+        {
+            foreach ((Position pos, HashSet<Facing> walls) in toMerge._walls)
+            {
+                Position newPos = pos;
+                newPos.X += offset.X;
+                newPos.Y += offset.Y;
+                AddWalls(newPos, walls);
+            }
+        }
+
+        private void MergeFloors(MapBuilder toMerge, Position offset)
+        {
             foreach ((Position pos, MutableTile tile) in toMerge._tiles)
             {
                 Position newPos = pos;
-                newPos.X += connectionPosition.X + onMap.Position.X;
-                newPos.Y += connectionPosition.Y + onMap.Position.Y;
+                newPos.X += offset.X;
+                newPos.Y += offset.Y;
 
                 //TODO Check for conflicts
                 _tiles[newPos] = tile;
             }
-
-            foreach ((Position pos, HashSet<Facing> walls) in toMerge._walls)
-            {
-                Position newPos = pos;
-                newPos.X += connectionPosition.X + onMap.Position.X;
-                newPos.Y += connectionPosition.Y + onMap.Position.Y;
-                AddWalls(newPos, walls);
-            }
-            return this;
         }
 
         public MapBuilder AddWalls(Position position, params Facing[] facing) => AddWalls(position, facing.ToList());
@@ -155,6 +187,10 @@ namespace CaptainCoder.Dungeoneering
 
         public IMap Build()
         {
+            foreach (ConnectionPoint connectionPoint in _unconnectedPoints)
+            {
+                AddWall(connectionPoint.Position, connectionPoint.Direction);
+            }
             List<(Position, ITile)> tiles = new();
             foreach (Position pos in _tiles.Keys)
             {
@@ -163,6 +199,7 @@ namespace CaptainCoder.Dungeoneering
                 tile._walls = walls;
                 tiles.Add((pos, tile));
             }
+            
             return new Map(tiles);
         }
     }

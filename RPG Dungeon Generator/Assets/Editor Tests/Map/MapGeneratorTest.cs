@@ -240,6 +240,7 @@ namespace CaptainCoder.Dungeoneering
             */
             IMap builtRoom = roomBuilder.Build();
             Debug.Log(builtRoom.ToASCII());
+            System.IO.File.WriteAllText("output.txt", builtRoom.ToASCII());
             Assert.AreEqual(13, builtRoom.Tiles.Count());
 
             expected = new();

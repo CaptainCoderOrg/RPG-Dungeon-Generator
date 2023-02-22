@@ -18,7 +18,9 @@ namespace CaptainCoder.Dungeoneering
         public bool HasConnectionPoint => _unconnectedPoints.Count > 0;
         public Random RNG { get; set; } = new Random();
         public List<ConnectionPoint> UnconnectedPoints => _unconnectedPoints.ToList();
-
+        public HashSet<Position> Floors => _tiles.Keys.ToHashSet();
+        public HashSet<Facing> WallsAt(Position position) => _walls[position];
+ 
         public bool TryFindConnectionPoint(Facing dir, out ConnectionPoint connectAt)
         {
             connectAt = default;
@@ -204,10 +206,16 @@ namespace CaptainCoder.Dungeoneering
         }
     }
 
-    class MutableTile : ITile
+    public class MutableTile : ITile
     {
         internal HashSet<Facing> _walls;
         public bool IsPassable => true;
         public HashSet<Facing> Walls => _walls.ToHashSet();
+
+        public MutableTile() { }
+        public MutableTile(IEnumerable<Facing> walls)
+        {
+            _walls = walls.ToHashSet();
+        }
     }
 }

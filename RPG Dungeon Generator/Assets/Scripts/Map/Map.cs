@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 
 namespace CaptainCoder.Dungeoneering
 {
@@ -70,5 +71,44 @@ namespace CaptainCoder.Dungeoneering
             return (new Position(minX, minY), new Position(maxX, maxY));
         }
 
+        public string ToASCII()
+        {
+            int width = TileBounds.bottomRight.X - TileBounds.topLeft.X + 1;
+            int height = TileBounds.bottomRight.Y - TileBounds.topLeft.Y + 1;
+            char[,] output = new char[height*2 + 1, width*2 + 1];
+            
+            foreach ((Position pos, ITile tile) in _tiles)
+            {
+                int row = pos.Y * 2 + 1;
+                int col = pos.X * 2 + 1;
+                
+                if (tile.IsPassable)
+                {
+                    output[row, col] = '.';
+                }
+                foreach(Facing facing in tile.Walls)
+                {
+                    (char wall, int colOff, int rowOff) = facing switch {
+                        Facing.North => ('-', 0, -1),
+                        Facing.South => ('-', 0, 1),
+                        Facing.East => ('|', 1, 0),
+                        Facing.West => ('|', -1, 0),
+                        _ => throw new InvalidOperationException($"Could not turn {facing} into char."), 
+                    };
+                    output[row + rowOff, col + colOff] = wall;
+                }
+            }
+            StringBuilder sb = new ();
+            for (int row = 0; row < output.GetLength(0); row++)
+            {
+                for (int col = 0; col < output.GetLength(1); col++)
+                {
+                    char ch = output[row, col] == default ? ' ' : output[row, col];
+                    sb.Append(ch);
+                }
+                if (row < output.GetLength(0) - 1) { sb.Append('\n'); }
+            }
+            return sb.ToString();
+        }
     }
 }

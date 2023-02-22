@@ -99,6 +99,19 @@ namespace CaptainCoder.Dungeoneering
                 .AddWalls(new Position(0, 1), Facing.South, Facing.West)
                 .AddConnectionPoint(new ConnectionPoint(new Position(1, 1), Facing.East));
 
+            Assert.AreEqual(4, roomBuilder.Floors.Count);
+            Dictionary<Position, HashSet<Facing>> expected = new();
+            expected[new(0, 0)] = new() { Facing.North, Facing.West };
+            expected[new(1, 0)] = new() { Facing.North, Facing.East };
+            expected[new(0, 1)] = new() { Facing.South, Facing.West };
+            expected[new(1, 1)] = new() { Facing.South };
+
+            foreach ((Position p, HashSet<Facing> walls) in expected)
+            {
+                Assert.AreEqual(walls, roomBuilder.WallsAt(p),
+                $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", roomBuilder.WallsAt(p))}");
+            }
+
             /*
             +-----+
             $. . .$
@@ -132,6 +145,22 @@ namespace CaptainCoder.Dungeoneering
             var expectedPoint = new ConnectionPoint(new Position(4, 1), Facing.East);
             Assert.AreEqual(expectedPoint, roomBuilder.UnconnectedPoints[0]);
 
+            Assert.AreEqual(7, roomBuilder.Floors.Count);
+            expected = new();
+            expected[new(0, 0)] = new() { Facing.North, Facing.West };
+            expected[new(1, 0)] = new() { Facing.North, Facing.East };
+            expected[new(0, 1)] = new() { Facing.South, Facing.West };
+            expected[new(1, 1)] = new() { Facing.South };
+            expected[new(2, 1)] = new() { Facing.North, Facing.South };
+            expected[new(3, 1)] = new() { Facing.North, Facing.South };
+            expected[new(4, 1)] = new() { Facing.North, Facing.South };
+
+            foreach ((Position p, HashSet<Facing> walls) in expected)
+            {
+                Assert.AreEqual(walls, roomBuilder.WallsAt(p),
+                $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", roomBuilder.WallsAt(p))}");
+            }
+
             /*
              +---+
              |. .|
@@ -144,6 +173,25 @@ namespace CaptainCoder.Dungeoneering
             Assert.AreEqual(2, corridorBuilder.UnconnectedPoints.Count());
             expectedPoint = new ConnectionPoint(new Position(7, 1), Facing.East);
             Assert.AreEqual(expectedPoint, roomBuilder.UnconnectedPoints[0]);
+
+            Assert.AreEqual(10, roomBuilder.Floors.Count);
+            expected = new();
+            expected[new(0, 0)] = new() { Facing.North, Facing.West };
+            expected[new(1, 0)] = new() { Facing.North, Facing.East };
+            expected[new(0, 1)] = new() { Facing.South, Facing.West };
+            expected[new(1, 1)] = new() { Facing.South };
+            expected[new(2, 1)] = new() { Facing.North, Facing.South };
+            expected[new(3, 1)] = new() { Facing.North, Facing.South };
+            expected[new(4, 1)] = new() { Facing.North, Facing.South };
+            expected[new(5, 1)] = new() { Facing.North, Facing.South };
+            expected[new(6, 1)] = new() { Facing.North, Facing.South };
+            expected[new(7, 1)] = new() { Facing.North, Facing.South };
+
+            foreach ((Position p, HashSet<Facing> walls) in expected)
+            {
+                Assert.AreEqual(walls, roomBuilder.WallsAt(p),
+                $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", roomBuilder.WallsAt(p))}");
+            }
 
 
             /*
@@ -159,10 +207,42 @@ namespace CaptainCoder.Dungeoneering
             expectedPoint = new ConnectionPoint(new Position(10, 1), Facing.East);
             Assert.AreEqual(expectedPoint, roomBuilder.UnconnectedPoints[0]);
 
+            Assert.AreEqual(13, roomBuilder.Floors.Count);
+            expected = new();
+            expected[new(0, 0)] = new() { Facing.North, Facing.West };
+            expected[new(1, 0)] = new() { Facing.North, Facing.East };
+            expected[new(0, 1)] = new() { Facing.South, Facing.West };
+            expected[new(1, 1)] = new() { Facing.South };
+            expected[new(2, 1)] = new() { Facing.North, Facing.South };
+            expected[new(3, 1)] = new() { Facing.North, Facing.South };
+            expected[new(4, 1)] = new() { Facing.North, Facing.South };
+            expected[new(5, 1)] = new() { Facing.North, Facing.South };
+            expected[new(6, 1)] = new() { Facing.North, Facing.South };
+            expected[new(7, 1)] = new() { Facing.North, Facing.South };
+            expected[new(8, 1)] = new() { Facing.North, Facing.South };
+            expected[new(9, 1)] = new() { Facing.North, Facing.South };
+            expected[new(10, 1)] = new() { Facing.North, Facing.South };
+
+            foreach ((Position p, HashSet<Facing> walls) in expected)
+            {
+                Assert.AreEqual(walls, roomBuilder.WallsAt(p),
+                $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", roomBuilder.WallsAt(p))}");
+            }
+
+
+            /*
+            Calling build replaces all connections with wall
+            +---+
+            |. .|
+            |   +-----------------+
+            |. . . . . . . . . . .|
+            +---------------------+
+            */
             IMap builtRoom = roomBuilder.Build();
+            Debug.Log(builtRoom.ToASCII());
             Assert.AreEqual(13, builtRoom.Tiles.Count());
 
-            Dictionary<Position, HashSet<Facing>> expected = new();
+            expected = new();
             expected[new(0, 0)] = new() { Facing.North, Facing.West };
             expected[new(1, 0)] = new() { Facing.North, Facing.East };
             expected[new(0, 1)] = new() { Facing.South, Facing.West };
@@ -180,7 +260,7 @@ namespace CaptainCoder.Dungeoneering
             foreach ((Position p, HashSet<Facing> walls) in expected)
             {
                 Assert.True(builtRoom.TileAt(p).IsPassable);
-                Assert.AreEqual(walls, builtRoom.TileAt(p).Walls, 
+                Assert.AreEqual(walls, builtRoom.TileAt(p).Walls,
                 $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", builtRoom.TileAt(p).Walls)}");
             }
         }

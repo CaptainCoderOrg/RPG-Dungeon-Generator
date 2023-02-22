@@ -58,8 +58,10 @@ namespace CaptainCoder.Dungeoneering
              +---------+
              */
 
+            Assert.AreEqual(0, roomBuilder.UnconnectedPoints.Count);
             IMap builtRoom = roomBuilder.Build();
             Assert.AreEqual(7, builtRoom.Tiles.Count());
+            
 
             Dictionary<Position, HashSet<Facing>> expected = new();
             expected[new(0, 0)] = new() { Facing.North, Facing.West };

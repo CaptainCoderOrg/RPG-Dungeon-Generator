@@ -13,5 +13,7 @@ namespace CaptainCoder.Dungeoneering
         /// Any position outside of these bounds is guaranteed to not be passable.
         /// </summary>
         public (Position topLeft, Position bottomRight) TileBounds { get; }
+
+        public string ToASCII();
     }
 }

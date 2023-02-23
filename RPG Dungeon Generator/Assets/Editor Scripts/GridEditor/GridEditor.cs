@@ -48,7 +48,7 @@ namespace CaptainCoder.Dungeoneering
             List<MapBuilder> corridorOptions = new() { Corridors.EastWest, Corridors.NorthSouth };
             MapGenerator generator = new (Rooms.Room2x2, corridorOptions);
 
-            IMap map = generator.Generate();
+            IMap map = generator.Generate(5);
 
             mapOutput.SetValueWithoutNotify(string.Join("\n", map.ToASCII()));
         }

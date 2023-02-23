@@ -239,22 +239,11 @@ namespace CaptainCoder.Dungeoneering
             List<(Position, ITile)> tiles = new();
             foreach (Position pos in _tiles.Keys)
             {
-                MutableTile tile = new(_walls[pos]);
+                
+                MutableTile tile = _walls.ContainsKey(pos) ? new MutableTile(_walls[pos]) : new MutableTile();
                 tiles.Add((pos, tile));
             }
             return new Map(tiles);
-        }
-
-        public MapBuilder Clone()
-        {
-            IMap copy = Build();
-            MapBuilder newBuilder = new();
-            foreach ((Position pos, ITile tile) in copy.Tiles)
-            {
-                newBuilder.AddFloor(pos);
-                newBuilder.AddWalls(pos, tile.Walls.ToArray());
-            }
-            return newBuilder;
         }
     }
 
@@ -264,7 +253,7 @@ namespace CaptainCoder.Dungeoneering
         public bool IsPassable => true;
         public HashSet<Facing> Walls => _walls.ToHashSet();
 
-        public MutableTile() { }
+        public MutableTile() { _walls = new HashSet<Facing>(); }
         public MutableTile(IEnumerable<Facing> walls)
         {
             _walls = walls.ToHashSet();

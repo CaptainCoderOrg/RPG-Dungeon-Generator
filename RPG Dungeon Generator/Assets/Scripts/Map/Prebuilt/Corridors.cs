@@ -29,9 +29,9 @@ namespace CaptainCoder.Dungeoneering
             .AddFloor(0, 0)
             .AddWalls(new Position(0, 0), Facing.East, Facing.West)
             .AddFloor(0, 1)
-            .AddWalls(new Position(1, 0), Facing.East, Facing.West)
+            .AddWalls(new Position(0, 1), Facing.East, Facing.West)
             .AddFloor(0, 2)
-            .AddWalls(new Position(2, 0), Facing.East, Facing.West)
+            .AddWalls(new Position(0, 2), Facing.East, Facing.West)
             .AddConnectionPoint(new ConnectionPoint(new Position(0, 0), Facing.North))
             .AddConnectionPoint(new ConnectionPoint(new Position(0, 2), Facing.South));
     }

@@ -60,11 +60,15 @@ namespace CaptainCoder.Dungeoneering
             int width = TileBounds.bottomRight.X - TileBounds.topLeft.X + 1;
             int height = TileBounds.bottomRight.Y - TileBounds.topLeft.Y + 1;
             char[,] output = new char[height*2 + 1, width*2 + 1];
+
+
+            int xOff = -TileBounds.topLeft.X;
+            int yOff = -TileBounds.topLeft.Y;
             
             foreach ((Position pos, ITile tile) in _tiles)
             {
-                int row = pos.Y * 2 + 1;
-                int col = pos.X * 2 + 1;
+                int row = (pos.Y + yOff) * 2 + 1;
+                int col = (pos.X + xOff) * 2 + 1;
                 
                 if (tile.IsPassable)
                 {

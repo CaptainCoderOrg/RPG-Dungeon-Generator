@@ -5,7 +5,7 @@
         <ui:Button text="Load" display-tooltip-when-elided="true" name="Load" />
         <ui:Button text="Add to Scene" display-tooltip-when-elided="true" name="AddToScene" />
     </ui:GroupBox>
-    <ui:TextField picking-mode="Ignore" text="+-----------+&#10;|.|. . . . .|&#10;| | | |     |&#10;|.|.|.|. . .|&#10;| | |-+-----+&#10;|. .|.|&#10;+---+ |&#10;    |.|&#10;    |-|&#10;    |.|&#10;+---+ |&#10;|.|. .|&#10;+-----+" name="MapData" tooltip="This is a tooltip" multiline="true" style="height: auto;" />
+    <ui:TextField picking-mode="Ignore" text="+-----------+&#10;|.|. . . . .|&#10;| | | |     |&#10;|.|.|.|. . .|&#10;| | |-+-----+&#10;|. .|.|&#10;+---+ |&#10;    |.|&#10;    |-|&#10;    |.|&#10;+---+ |&#10;|.|. .|&#10;+-----+" name="MapData" tooltip="This is a tooltip" multiline="true" style="height: auto; max-height: 300px;" />
     <ui:VisualElement name="ObjectRefContainer" />
     <ui:Button text="Generate" display-tooltip-when-elided="true" name="Generate" />
 </ui:UXML>

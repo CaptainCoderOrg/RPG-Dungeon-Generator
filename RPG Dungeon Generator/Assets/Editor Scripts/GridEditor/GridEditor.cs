@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace CaptainCoder.Dungeoneering
 {
     public class GridEditor : EditorWindow
-    {   
+    {    
         [MenuItem("Dungeoneering Kit/Grid Editor")]
         public static void ShowExample()
         {
@@ -43,12 +43,9 @@ namespace CaptainCoder.Dungeoneering
 
         private void GenerateGrid(TextField mapOutput)
         {
-            
-            
-            List<MapBuilder> corridorOptions = new() { Corridors.EastWest, Corridors.NorthSouth };
-            MapGenerator generator = new (Rooms.Room2x2, corridorOptions);
+            MapGenerator generator = new (Rooms.Room2x2, Corridors.All);
 
-            IMap map = generator.Generate(5);
+            IMap map = generator.Generate(15);
 
             mapOutput.SetValueWithoutNotify(string.Join("\n", map.ToASCII()));
         }

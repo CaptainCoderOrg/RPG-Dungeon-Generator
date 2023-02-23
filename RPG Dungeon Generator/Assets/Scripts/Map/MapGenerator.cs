@@ -12,7 +12,7 @@ namespace CaptainCoder.Dungeoneering
         private List<MapBuilder> _corridorOptions = new();
         private MapBuilder _builder = new();
 
-        public MapGenerator(MapBuilder startingBuilder, List<MapBuilder> corridorOptions)
+        public MapGenerator(MapBuilder startingBuilder, IEnumerable<MapBuilder> corridorOptions)
         {
             Debug.Assert(startingBuilder != null);
             Debug.Assert(corridorOptions != null);

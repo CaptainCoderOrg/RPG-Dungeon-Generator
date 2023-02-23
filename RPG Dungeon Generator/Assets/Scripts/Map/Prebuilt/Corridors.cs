@@ -34,6 +34,54 @@ namespace CaptainCoder.Dungeoneering
             .AddWalls(new Position(0, 2), Facing.East, Facing.West)
             .AddConnectionPoint(new ConnectionPoint(new Position(0, 0), Facing.North))
             .AddConnectionPoint(new ConnectionPoint(new Position(0, 2), Facing.South));
+
+        
+        //   +$+
+        //   |.|
+        // --+ +--
+        // $. . .$
+        // --+ +--
+        //   |.|
+        //   +$+
+        public static MapBuilder Cross => new MapBuilder()
+            .AddFloor(0, 0)
+            
+            .AddFloor(0, -1)
+            .AddWalls(new Position(0, -1), Facing.East, Facing.West)
+            .AddConnectionPoint(new ConnectionPoint(new Position(0, -1), Facing.North))
+
+            .AddFloor(0, 1)
+            .AddWalls(new Position(0, 1), Facing.East, Facing.West)
+            .AddConnectionPoint(new ConnectionPoint(new Position(0, 1), Facing.South))
+
+            .AddFloor(-1, 0)
+            .AddWalls(new Position(-1, 0), Facing.North, Facing.South)
+            .AddConnectionPoint(new ConnectionPoint(new Position(-1, 0), Facing.West))
+
+            .AddFloor(1, 0)
+            .AddWalls(new Position(1, 0), Facing.North, Facing.South)
+            .AddConnectionPoint(new ConnectionPoint(new Position(1, 0), Facing.East));
+
+        // +---+
+        // |. .$
+        // | +-+
+        // |.|
+        // +$+
+        public static MapBuilder Corner => new MapBuilder()
+            .AddFloor(0, 0)
+            .AddWalls(new Position(0, 0), Facing.North, Facing.West)
+            
+            .AddFloor(0, 1)
+            .AddWalls(new Position(0, 1), Facing.East, Facing.West)
+            .AddConnectionPoint(new ConnectionPoint(new Position(0, 1), Facing.South))
+
+            .AddFloor(1, 0)
+            .AddWalls(new Position(1, 0), Facing.North, Facing.South)
+            .AddConnectionPoint(new ConnectionPoint(new Position(1, 0), Facing.East));
+
+        
+        public static MapBuilder[] All => new[] { Cross, Corner, EastWest, NorthSouth };
+
     }
 
 }

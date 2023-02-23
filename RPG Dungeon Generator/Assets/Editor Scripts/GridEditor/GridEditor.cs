@@ -44,77 +44,13 @@ namespace CaptainCoder.Dungeoneering
         private void GenerateGrid(TextField mapOutput)
         {
             
-            /*
-             +$--+
-             |. .|
-             |   |
-             $. .$
-             +--$+
-            */
-            MapBuilder startRoom = new MapBuilder()
-                .AddFloor(0, 0)
-                .AddFloor(0, 1)
-                .AddFloor(1, 0)
-                .AddFloor(1, 1)
-                .AddWalls(new Position(0, 0), Facing.North, Facing.West)
-                .AddWalls(new Position(1, 0), Facing.North, Facing.East)
-                .AddWalls(new Position(1, 1), Facing.South)
-                .AddWalls(new Position(0, 1), Facing.South, Facing.West)
-                .AddConnectionPoint(new ConnectionPoint(new Position(1, 1), Facing.East))
-                .AddConnectionPoint(new ConnectionPoint(new Position(1, 0), Facing.West))
-                .AddConnectionPoint(new ConnectionPoint(new Position(0, 0), Facing.North))
-                .AddConnectionPoint(new ConnectionPoint(new Position(1, 1), Facing.South))
-                ;
-
-
-            /*
-            +-----+
-            $. . .$
-            +-----+
-            */
-            MapBuilder eastWestCorridor = new();
-            eastWestCorridor
-                .AddFloor(0, 0)
-                .AddWalls(new Position(0, 0), Facing.North, Facing.South)
-                .AddFloor(1, 0)
-                .AddWalls(new Position(1, 0), Facing.North, Facing.South)
-                .AddFloor(2, 0)
-                .AddWalls(new Position(2, 0), Facing.North, Facing.South)
-                .AddConnectionPoint(new ConnectionPoint(new Position(0, 0), Facing.West))
-                .AddConnectionPoint(new ConnectionPoint(new Position(2, 0), Facing.East));
-
-            /*
-            +$+
-            |.|
-            | |
-            |.|
-            | |
-            |.|
-            +$+
-
-            */
-            MapBuilder northSouthCorridor = new();
-            northSouthCorridor
-                .AddFloor(0, 0)
-                .AddWalls(new Position(0, 0), Facing.East, Facing.West)
-                .AddFloor(0, 1)
-                .AddWalls(new Position(1, 0), Facing.East, Facing.West)
-                .AddFloor(0, 2)
-                .AddWalls(new Position(2, 0), Facing.East, Facing.West)
-                .AddConnectionPoint(new ConnectionPoint(new Position(0, 0), Facing.North))
-                .AddConnectionPoint(new ConnectionPoint(new Position(0, 2), Facing.South));
-
-            List<MapBuilder> corridorOptions = new() { eastWestCorridor, northSouthCorridor };
-            MapGenerator generator = new (startRoom, corridorOptions);
+            
+            List<MapBuilder> corridorOptions = new() { Corridors.EastWest, Corridors.NorthSouth };
+            MapGenerator generator = new (Rooms.Room2x2, corridorOptions);
 
             IMap map = generator.Generate();
 
             mapOutput.SetValueWithoutNotify(string.Join("\n", map.ToASCII()));
-        }
-
-        private void ShowValue(ObjectField gridCellDatabase)
-        {
-            Debug.Log(gridCellDatabase.value);
         }
 
         private void AddToScene(GridCellDatabase database, string grid, Transform container)

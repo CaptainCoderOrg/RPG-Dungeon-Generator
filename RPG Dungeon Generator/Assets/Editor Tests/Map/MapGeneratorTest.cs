@@ -49,6 +49,7 @@ namespace CaptainCoder.Dungeoneering
 
             List<MapBuilder> corridorOptions = new() { corridorBuilder };
             MapGenerator generator = new(roomBuilder, corridorOptions);
+            Assert.True(roomBuilder.CanMergeAt(new ConnectionPoint(new Position(1, 1), Facing.East), corridorBuilder));
             IMap builtRoom = generator.Generate();
 
             /*

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace CaptainCoder.Dungeoneering
 {
@@ -23,16 +24,17 @@ namespace CaptainCoder.Dungeoneering
         {
             if (_builder.TryRemoveRandomConnectionPoint(out ConnectionPoint toConnect))
             {
-                int ix = RNG.Next(0, _corridorOptions.Count);
-                MapBuilder corridor = _corridorOptions[ix];
-                if (corridor.TryFindConnectionPoint(toConnect.Direction.Rotate180(), out ConnectionPoint connectAt))
+                var corridor = _corridorOptions
+                    .Where(c => _builder.CanMergeAt(toConnect, c))
+                    .OrderBy(_ => RNG.Next())
+                    .FirstOrDefault();
+                if (corridor == default)
                 {
-                    _builder.MergeAt(toConnect, corridor, connectAt);
+                    _builder.AddWall(toConnect.Position, toConnect.Direction);
                 }
                 else
                 {
-                    // TODO: Do something more intelligent
-                    _builder.AddWall(toConnect.Position, toConnect.Direction);
+                    _builder.Merge(toConnect, corridor);
                 }
                 return true;
             }

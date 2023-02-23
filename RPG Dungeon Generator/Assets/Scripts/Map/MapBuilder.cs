@@ -34,6 +34,14 @@ namespace CaptainCoder.Dungeoneering
             return true;
         }
 
+        public ConnectionPoint FindConnectionPoint(Facing dir)
+        {
+           return  _unconnectedPoints
+                    .Where(f => f.Direction == dir)
+                    .OrderBy(_ => RNG.Next())
+                    .First();
+        }
+
         public MapBuilder AddConnectionPoint(ConnectionPoint point)
         {
             // TODO: Point should be on edge of map?
@@ -41,6 +49,15 @@ namespace CaptainCoder.Dungeoneering
             _connectionPoints.Add(point);
             _unconnectedPoints.Add(point);
             return this;
+        }
+
+        public bool CanMergeAt(ConnectionPoint point, MapBuilder other)
+        {
+            foreach (ConnectionPoint otherPoint in other._unconnectedPoints)
+            {
+                if (CanMergeAt(point, other, otherPoint)) { return true; }
+            }
+            return false;
         }
 
         /// <summary>
@@ -65,7 +82,6 @@ namespace CaptainCoder.Dungeoneering
         public bool CanMergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
         {
             if (onBuilder.Direction.Rotate180() != onMap.Direction) { return false; }
-            if (!_unconnectedPoints.Contains(onBuilder)) { return false; }
             Position offset = onMap.Offset(onBuilder);
             foreach ((Position pos, MutableTile tile) in toMerge._tiles)
             {
@@ -73,6 +89,14 @@ namespace CaptainCoder.Dungeoneering
                 if (_tiles.ContainsKey(newPos)) { return false; }
             }
             return true;
+        }
+
+        public MapBuilder Merge(ConnectionPoint onBuilder, MapBuilder toMerge)
+        {
+            ConnectionPoint point = toMerge.FindConnectionPoint(onBuilder.Direction.Rotate180());
+            if (!CanMergeAt(onBuilder, toMerge, point)) { throw new System.ArgumentException("Cannot perform merge."); }
+            MergeAt(onBuilder, toMerge, point);
+            return this;
         }
 
         public bool TryMergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)

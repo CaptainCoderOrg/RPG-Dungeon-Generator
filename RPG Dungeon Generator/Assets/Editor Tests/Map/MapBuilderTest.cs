@@ -397,6 +397,16 @@ namespace CaptainCoder.Dungeoneering
             Assert.False(roomBuilder.CanMergeAt(east, Corridors.NorthSouth, corridorSouth));
             Assert.False(roomBuilder.CanMergeAt(west, Corridors.NorthSouth, corridorNorth));
             Assert.False(roomBuilder.CanMergeAt(west, Corridors.NorthSouth, corridorSouth));
+
+            Assert.True(roomBuilder.CanMergeAt(north, Corridors.NorthSouth));
+            Assert.True(roomBuilder.CanMergeAt(south, Corridors.NorthSouth));
+            Assert.False(roomBuilder.CanMergeAt(east, Corridors.NorthSouth));
+            Assert.False(roomBuilder.CanMergeAt(west, Corridors.NorthSouth));
+
+            Assert.False(roomBuilder.CanMergeAt(north, Corridors.EastWest));
+            Assert.False(roomBuilder.CanMergeAt(south, Corridors.EastWest));
+            Assert.True(roomBuilder.CanMergeAt(east, Corridors.EastWest));
+            Assert.True(roomBuilder.CanMergeAt(west, Corridors.EastWest));
         }
     }
 }

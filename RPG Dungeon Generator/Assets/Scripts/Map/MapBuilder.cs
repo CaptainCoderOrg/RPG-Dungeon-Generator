@@ -20,7 +20,7 @@ namespace CaptainCoder.Dungeoneering
         public List<ConnectionPoint> UnconnectedPoints => _unconnectedPoints.ToList();
         public HashSet<Position> Floors => _tiles.Keys.ToHashSet();
         public HashSet<Facing> WallsAt(Position position) => _walls[position];
- 
+
         public bool TryFindConnectionPoint(Facing dir, out ConnectionPoint connectAt)
         {
             connectAt = default;
@@ -46,7 +46,7 @@ namespace CaptainCoder.Dungeoneering
         /// <summary>
         /// Attempts to remove a Random <see cref="ConnectionPoint"/>. If succesful, returns true
         /// and <paramref name="removed"/> is set to the removed <see cref="ConnectionPoint"/>.
-        /// Othewise, returns false and the value of <paramref name="removed"/> is undefined.
+        /// Otherwise, returns false and the value of <paramref name="removed"/> is undefined.
         /// </summary>
         public bool TryRemoveRandomConnectionPoint(out ConnectionPoint removed)
         {
@@ -62,13 +62,31 @@ namespace CaptainCoder.Dungeoneering
             return true;
         }
 
+        public bool CanMergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
+        {
+            if (onBuilder.Direction.Rotate180() != onMap.Direction) { return false; }
+            if (!_unconnectedPoints.Contains(onBuilder)) { return false; }
+            Position offset = onMap.Offset(onBuilder);
+            foreach ((Position pos, MutableTile tile) in toMerge._tiles)
+            {
+                Position newPos = new(pos.X + offset.X, pos.Y + offset.Y);
+                if (_tiles.ContainsKey(newPos)) { return false; }
+            }
+            return true;
+        }
+
+        public bool TryMergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
+        {
+            if (!CanMergeAt(onBuilder, toMerge, onBuilder)) { return false; }
+            MergeAt(onBuilder, toMerge, onBuilder);
+            return true;
+        }
+
         public MapBuilder MergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
         {
-            
             // TODO: Check for conflicts in Map Merge
             _unconnectedPoints.Remove(onBuilder);
-            Position connectionPosition = onBuilder.Position.Neighbor(onBuilder.Direction);
-            Position offset = new(connectionPosition.X + onMap.Position.X, connectionPosition.Y + onMap.Position.Y);
+            Position offset = onMap.Offset(onBuilder);
             MergeFloors(toMerge, offset);
             MergeWalls(toMerge, offset);
             MergeConnectionPoints(toMerge, offset, onMap);
@@ -197,10 +215,22 @@ namespace CaptainCoder.Dungeoneering
             List<(Position, ITile)> tiles = new();
             foreach (Position pos in _tiles.Keys)
             {
-                MutableTile tile = new (_walls[pos]);
+                MutableTile tile = new(_walls[pos]);
                 tiles.Add((pos, tile));
             }
             return new Map(tiles);
+        }
+
+        public MapBuilder Clone()
+        {
+            IMap copy = Build();
+            MapBuilder newBuilder = new();
+            foreach ((Position pos, ITile tile) in copy.Tiles)
+            {
+                newBuilder.AddFloor(pos);
+                newBuilder.AddWalls(pos, tile.Walls.ToArray());
+            }
+            return newBuilder;
         }
     }
 

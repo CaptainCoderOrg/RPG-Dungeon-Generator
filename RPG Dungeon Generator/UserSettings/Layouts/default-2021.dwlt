@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 2061
-    y: 60
-    width: 1497
-    height: 863
+    x: 0
+    y: 43.2
+    width: 2048
+    height: 1068.8
   m_ShowMode: 4
   m_Title: Test Runner
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 0
+  m_Maximized: 1
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -43,12 +43,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1497
-    height: 813
+    width: 2048
+    height: 1018.80005
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 68
+  controlID: 16
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -64,10 +64,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1018
+    x: 710.4
     y: 0
-    width: 479
-    height: 813
+    width: 1337.6
+    height: 1018.80005
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
@@ -94,8 +94,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 263
-    height: 520
+    width: 185.6
+    height: 651.2
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 520
-    width: 1018
-    height: 293
+    y: 651.2
+    width: 710.4
+    height: 367.60004
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 15}
@@ -150,8 +150,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1497
-    height: 863
+    width: 2048
+    height: 1068.8
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -175,7 +175,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1497
+    width: 2048
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 843
-    width: 1497
+    y: 1048.8
+    width: 2048
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -220,12 +220,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1018
-    height: 813
+    width: 710.4
+    height: 1018.80005
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 69
+  controlID: 17
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,12 +245,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1018
-    height: 520
+    width: 710.4
+    height: 651.2
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 70
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,10 +266,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 263
+    x: 185.6
     y: 0
-    width: 755
-    height: 520
+    width: 524.80005
+    height: 651.2
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
@@ -299,31 +299,31 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 3079
-    y: 90
-    width: 478
-    height: 792
+    x: 710.4
+    y: 73.6
+    width: 1336.6
+    height: 997.80005
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 115
-    splitterInitialOffset: 288
+    ID: 124
+    splitterInitialOffset: 432
     currentActiveSplitter: -1
     realSizes:
-    - 221
-    - 501
+    - 462.4
+    - 465.6
     relativeSizes:
-    - 0.30609417
-    - 0.69390583
+    - 0.49861497
+    - 0.50138503
     minSizes:
     - 32
     - 32
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 722
+    lastTotalSize: 928
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -375,7 +375,7 @@ MonoBehaviour:
       name: RPG Dungeon Generator
       fullName: RPG Dungeon Generator
       resultStatus: 2
-      duration: 0.3826851
+      duration: 0.0955536
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -391,7 +391,7 @@ MonoBehaviour:
       name: EditorTests.dll
       fullName: D:/git/CaptainCoderOrg/RPG-Dungeon-Generator/RPG Dungeon Generator/Library/ScriptAssemblies/EditorTests.dll
       resultStatus: 2
-      duration: 0.3315367
+      duration: 0.0528924
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -407,7 +407,7 @@ MonoBehaviour:
       name: CaptainCoder
       fullName: CaptainCoder
       resultStatus: 2
-      duration: 0.2391465
+      duration: 0.0520859
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -423,7 +423,7 @@ MonoBehaviour:
       name: Dungeoneering
       fullName: CaptainCoder.Dungeoneering
       resultStatus: 2
-      duration: 0.1401512
+      duration: 0.0516822
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -439,7 +439,7 @@ MonoBehaviour:
       name: MapBuilderTest
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest
       resultStatus: 2
-      duration: 0.1368562
+      duration: 0.0477342
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -455,7 +455,7 @@ MonoBehaviour:
       name: MapBuilderTest2x2Room
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTest2x2Room
       resultStatus: 1
-      duration: 0.0482256
+      duration: 0.0529346
       messages: 
       output: 
       stacktrace: 
@@ -472,7 +472,7 @@ MonoBehaviour:
       name: MapBuilderTestBuildWithShortHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestBuildWithShortHall
       resultStatus: 1
-      duration: 0.0542064
+      duration: 0.0053279
       messages: 
       output: 
       stacktrace: 
@@ -488,18 +488,28 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/MapBuilderTest/[EditorTests][CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildAtShortHall]
       name: MapBuilderTestMergeAndBuildAtShortHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildAtShortHall
-      resultStatus: 2
-      duration: 0.0350054
-      messages: "  String lengths are both 59. Strings differ at index 40.\r\n  Expected:
-        \" - -       \\n|. .|      \\n     - - - \\n|. . . . .|\\n - - - - - \"\r\n 
-        But was:  \" - -       \\n|. .|      \\n     - - - \\n|. .|. . .|\\n - -
-        - - - \"\r\n  ------------------------------------------------------^\r\n"
+      resultStatus: 1
+      duration: 0.0074732
+      messages: 
       output: 
-      stacktrace: 'at CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildAtShortHall
-        () [0x00179] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon
-        Generator\Assets\Editor Tests\Map\MapBuilderTest.cs:199
-
-'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.MapBuilderTest][suite]
+    - id: 1005
+      uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/MapBuilderTest/[EditorTests][CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildWith2xShortHall]
+      name: MapBuilderTestMergeAndBuildWith2xShortHall
+      fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildWith2xShortHall
+      resultStatus: 1
+      duration: 0.001407
+      messages: 
+      output: 
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -513,10 +523,31 @@ MonoBehaviour:
       name: MapBuilderTestMergeAtWithStraightHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAtWithStraightHall
       resultStatus: 1
-      duration: 0.006281
+      duration: 0.0039336
       messages: 
       output: 
       stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.MapBuilderTest][suite]
+    - id: 1007
+      uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/MapBuilderTest/[EditorTests][CaptainCoder.Dungeoneering.MapBuilderTest.TestCanMergeAt]
+      name: TestCanMergeAt
+      fullName: CaptainCoder.Dungeoneering.MapBuilderTest.TestCanMergeAt
+      resultStatus: 2
+      duration: 0.0321691
+      messages: "  Expected: True\r\n  But was:  False\r\n"
+      output: 
+      stacktrace: 'at CaptainCoder.Dungeoneering.MapBuilderTest.TestCanMergeAt ()
+        [0x00121] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon Generator\Assets\Editor
+        Tests\Map\MapBuilderTest.cs:391
+
+'
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -529,9 +560,9 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.MapGeneratorTest][suite]
       name: MapGeneratorTest
       fullName: CaptainCoder.Dungeoneering.MapGeneratorTest
-      resultStatus: 2
-      duration: 5.1285214
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.0383511
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -546,7 +577,7 @@ MonoBehaviour:
       name: MapGeneratorTestSimpleGenerate
       fullName: CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerate
       resultStatus: 1
-      duration: 0.0624212
+      duration: 0.0070095
       messages: 
       output: 
       stacktrace: 
@@ -562,18 +593,12 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/MapGeneratorTest/[EditorTests][CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerateWithAdditionalConnections]
       name: MapGeneratorTestSimpleGenerateWithAdditionalConnections
       fullName: CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerateWithAdditionalConnections
-      resultStatus: 2
-      duration: 5.1094193
-      messages: "  Walls did not match at Position (4, 1). Expected North, South
-        but was North, South, East\r\n  Expected and actual are both <System.Collections.Generic.HashSet`1[CaptainCoder.Dungeoneering.Facing]>\r\n 
-        Values differ at index [2]\r\n"
+      resultStatus: 1
+      duration: 0.0172587
+      messages: 
       output: " - -                   \n|. .|                  \n     - - - - - -
-        - - - \n|. . . . .|. . .|. . .|\n - - - - - - - - - - - \r\n"
-      stacktrace: 'at CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerateWithAdditionalConnections
-        () [0x00c42] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon
-        Generator\Assets\Editor Tests\Map\MapGeneratorTest.cs:264
-
-'
+        - - - \n|. . . . . . . . . . .|\n - - - - - - - - - - - \r\n"
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -587,7 +612,7 @@ MonoBehaviour:
       name: MapTest
       fullName: CaptainCoder.Dungeoneering.MapTest
       resultStatus: 1
-      duration: 0.071898
+      duration: 0.0207807
       messages: 
       output: 
       stacktrace: 
@@ -602,8 +627,8 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/MapTest/[EditorTests][CaptainCoder.Dungeoneering.MapTest.Test1x1RoomToASCII]
       name: Test1x1RoomToASCII
       fullName: CaptainCoder.Dungeoneering.MapTest.Test1x1RoomToASCII
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0032263
       messages: 
       output: 
       stacktrace: 
@@ -619,8 +644,8 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/MapTest/[EditorTests][CaptainCoder.Dungeoneering.MapTest.Test2x2RoomToASCII]
       name: Test2x2RoomToASCII
       fullName: CaptainCoder.Dungeoneering.MapTest.Test2x2RoomToASCII
-      resultStatus: 0
-      duration: 0
+      resultStatus: 1
+      duration: 0.0011939
       messages: 
       output: 
       stacktrace: 
@@ -637,7 +662,7 @@ MonoBehaviour:
       name: TestRoomWithHallToASCII
       fullName: CaptainCoder.Dungeoneering.MapTest.TestRoomWithHallToASCII
       resultStatus: 1
-      duration: 0.0507833
+      duration: 0.0014909
       messages: 
       output: 
       stacktrace: 
@@ -649,22 +674,18 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1007
       parentUniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.MapTest][suite]
-    m_ResultText: "MapBuilderTestMergeAndBuildAtShortHall (0.035s)\n---\nString lengths
-      are both 59. Strings differ at index 40.\r\n  Expected: \" - -       \\n|.
-      .|      \\n     - - - \\n|. . . . .|\\n - - - - - \"\r\n  But was:  \" - -      
-      \\n|. .|      \\n     - - - \\n|. .|. . .|\\n - - - - - \"\r\n  ------------------------------------------------------^\n---\nat
-      CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildAtShortHall
-      () [0x00179] in D:\\git\\CaptainCoderOrg\\RPG-Dungeon-Generator\\RPG Dungeon
-      Generator\\Assets\\Editor Tests\\Map\\MapBuilderTest.cs:199"
-    m_ResultStacktrace: 'at CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildAtShortHall
-      () [0x00179] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon Generator\Assets\Editor
-      Tests\Map\MapBuilderTest.cs:199
+    m_ResultText: "TestCanMergeAt (0.032s)\n---\nExpected: True\r\n  But was:  False\n---\nat
+      CaptainCoder.Dungeoneering.MapBuilderTest.TestCanMergeAt () [0x00121] in D:\\git\\CaptainCoderOrg\\RPG-Dungeon-Generator\\RPG
+      Dungeon Generator\\Assets\\Editor Tests\\Map\\MapBuilderTest.cs:391"
+    m_ResultStacktrace: 'at CaptainCoder.Dungeoneering.MapBuilderTest.TestCanMergeAt
+      () [0x00121] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon Generator\Assets\Editor
+      Tests\Map\MapBuilderTest.cs:391
 
 '
     m_TestListState:
-      scrollPos: {x: 0, y: 23}
-      m_SelectedIDs: 2a647d3e
-      m_LastClickedID: 1048405034
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 83eaaabb
+      m_LastClickedID: -1146426749
       m_ExpandedIDs: 883e2d8516d1c8a41a5f65d2be413a1133c7f81c0c24cb1ffa4cd628ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -711,9 +732,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2999
+    x: 3048
     y: 90
-    width: 554
+    width: 509
     height: 792
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -735,7 +756,7 @@ MonoBehaviour:
   m_MaxSize: {x: 2048, y: 2048}
   m_TitleContent:
     m_Text: Asset Store
-    m_Image: {fileID: -8693916549880196297, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -7444545952099596278, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
@@ -763,14 +784,14 @@ MonoBehaviour:
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
     m_Text: Project
-    m_Image: {fileID: -5467254957812901981, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -5179483145760003458, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2061
-    y: 610
-    width: 1017
-    height: 272
+    x: 0
+    y: 724.8
+    width: 709.4
+    height: 346.60004
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -788,22 +809,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Prefabs/Grid
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Prefabs/Grid
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon Generator
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 94680000
-    m_LastClickedID: 26772
-    m_ExpandedIDs: 000000009468000096680000986800009a6800009c6800009e68000000ca9a3b
+    scrollPos: {x: 0, y: 29.399963}
+    m_SelectedIDs: 9e680000
+    m_LastClickedID: 26782
+    m_ExpandedIDs: 000000009468000096680000986800009a6800009e6800000869000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -903,14 +924,14 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Inspector
-    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -440750813802333266, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2999
+    x: 2790
     y: 90
-    width: 554
-    height: 832
+    width: 767
+    height: 792
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -944,14 +965,14 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Hierarchy
-    m_Image: {fileID: 7966133145522015247, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -3734745235275155857, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2061
-    y: 90
-    width: 262
-    height: 499
+    x: 0
+    y: 73.6
+    width: 184.6
+    height: 630.2
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -961,7 +982,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e8eaffff0aecffffceedffffb8efffffaaf1ffff70f3ffff3ef5ffffccf6ffff9cf8ffff16fbffff
+      m_ExpandedIDs: b429ffffc82dffff1a31ffff344cffffec4effff1250ffffe051ffff5856ffff9ab9ffffe0b9ffff98bbffff1cbeffff4abfffffc6daffffe8dafffffedcffff54deffff76e1ffff88e3fffff0e4ffff16fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1001,14 +1022,14 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Scene
-    m_Image: {fileID: 2593428753322112591, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: 8634526014445323508, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2324
-    y: 90
-    width: 753
-    height: 499
+    x: 185.6
+    y: 73.6
+    width: 522.80005
+    height: 630.2
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1084,7 +1105,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -111, y: 86}
+      snapOffset: {x: -112, y: 86}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
       id: Orientation
@@ -1243,9 +1264,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -153.83142, y: -66.58997, z: 35.915062}
+    m_Target: {x: -10.156927, y: -203.091, z: 15.112818}
     speed: 2
-    m_Value: {x: -153.83142, y: -66.58997, z: 35.915062}
+    m_Value: {x: -10.156927, y: -203.091, z: 15.112818}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1292,13 +1313,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.15962178, y: -0.65074414, z: 0.14130679, w: 0.7289024}
+    m_Target: {x: -0.4883043, y: 0.5091958, z: -0.45842755, w: -0.5406832}
     speed: 2
-    m_Value: {x: 0.15960474, y: -0.6506747, z: 0.14129171, w: 0.7288246}
+    m_Value: {x: -0.48825166, y: 0.5091409, z: -0.45837817, w: -0.540625}
   m_Size:
-    m_Target: 87.018425
+    m_Target: 124.97381
     speed: 2
-    m_Value: 87.018425
+    m_Value: 124.97381
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1339,7 +1360,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Game
-    m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
@@ -1357,7 +1378,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 549, y: 483}
+  m_TargetSize: {x: 686.25, y: 603.75}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1409,7 +1430,7 @@ MonoBehaviour:
       height: 483
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 549, y: 504}
+  m_LastWindowPixelSize: {x: 686.25, y: 630}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -1431,13 +1452,13 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -4950941429401207979, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 2061
     y: 610
-    width: 1017
+    width: 986
     height: 272
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

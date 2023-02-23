@@ -41,7 +41,7 @@ namespace CaptainCoder.Dungeoneering
 
         public IMap Generate(int steps = 100)
         {
-            while (steps-- > 0 && GenerateStep());
+            while (steps-- > 0 && GenerateStep()) ;
             return _builder.Build();
         }
 

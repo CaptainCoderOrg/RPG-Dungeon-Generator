@@ -14,6 +14,8 @@ namespace CaptainCoder.Dungeoneering
             Direction = direction;
         }
 
+        public Position Offset(ConnectionPoint other) => other.Position.Neighbor(other.Direction) - Position;
+
         public override bool Equals(object obj)
         {
             return obj is ConnectionPoint point &&

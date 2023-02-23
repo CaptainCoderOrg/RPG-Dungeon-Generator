@@ -30,7 +30,7 @@ namespace CaptainCoder.Dungeoneering
                 Debug.Assert(!_tiles.ContainsKey(p), $"Duplicate position detected {p}");
                 _tiles[p] = t;
             }
-            TileBounds = FindBounds();
+            TileBounds = Position.FindBounds(_tiles.Keys);
         }
 
         public ITile TileAt(Position p)
@@ -53,22 +53,6 @@ namespace CaptainCoder.Dungeoneering
         {
             if (!_tiles.TryGetValue(toCheck, out ITile tile)) { return false; }
             return tile.Walls.Contains(wallDirection);
-        }
-
-        private (Position, Position) FindBounds()
-        {
-            int minX = int.MaxValue;
-            int maxX = int.MinValue;
-            int minY = int.MaxValue;
-            int maxY = int.MinValue;
-            foreach (Position p in _tiles.Keys)
-            {
-                minX = Math.Min(minX, p.X);
-                maxX = Math.Max(maxX, p.X);
-                minY = Math.Min(minY, p.Y);
-                maxY = Math.Max(maxY, p.Y);
-            }
-            return (new Position(minX, minY), new Position(maxX, maxY));
         }
 
         public string ToASCII()

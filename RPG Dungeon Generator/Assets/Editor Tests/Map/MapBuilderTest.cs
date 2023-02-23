@@ -61,7 +61,7 @@ namespace CaptainCoder.Dungeoneering
             Assert.AreEqual(0, roomBuilder.UnconnectedPoints.Count);
             IMap builtRoom = roomBuilder.Build();
             Assert.AreEqual(7, builtRoom.Tiles.Count());
-            
+
 
             Dictionary<Position, HashSet<Facing>> expected = new();
             expected[new(0, 0)] = new() { Facing.North, Facing.West };
@@ -155,7 +155,7 @@ namespace CaptainCoder.Dungeoneering
                 .AddWalls(new Position(0, 1), Facing.South, Facing.West)
                 .AddConnectionPoint(roomConnection);
             Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
-            
+
 
             /*
             +-----+
@@ -163,8 +163,8 @@ namespace CaptainCoder.Dungeoneering
             +-----+
             */
             MapBuilder corridorBuilder = new();
-            ConnectionPoint corridorConnection = new (new Position(0, 0), Facing.West);
-            ConnectionPoint corridorConnection2 = new (new Position(2, 0), Facing.East);
+            ConnectionPoint corridorConnection = new(new Position(0, 0), Facing.West);
+            ConnectionPoint corridorConnection2 = new(new Position(2, 0), Facing.East);
             corridorBuilder
                 .AddFloor(0, 0)
                 .AddWalls(new Position(0, 0), Facing.North, Facing.South)
@@ -173,12 +173,12 @@ namespace CaptainCoder.Dungeoneering
                 .AddFloor(2, 0)
                 .AddWalls(new Position(2, 0), Facing.North, Facing.South)
                 .AddConnectionPoint(corridorConnection)
-                .AddConnectionPoint(corridorConnection2); 
+                .AddConnectionPoint(corridorConnection2);
             Assert.AreEqual(2, corridorBuilder.UnconnectedPoints.Count);
 
             roomBuilder.MergeAt(roomConnection, corridorBuilder, corridorConnection);
             Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
-            Assert.AreEqual(new ConnectionPoint(new Position(4,1), Facing.East), roomBuilder.UnconnectedPoints[0]);
+            Assert.AreEqual(new ConnectionPoint(new Position(4, 1), Facing.East), roomBuilder.UnconnectedPoints[0]);
 
             /*
              +---+
@@ -225,7 +225,7 @@ namespace CaptainCoder.Dungeoneering
                 .AddWalls(new Position(0, 1), Facing.South, Facing.West)
                 .AddConnectionPoint(roomConnection);
             Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
-            
+
 
             /*
             +-----+
@@ -233,8 +233,8 @@ namespace CaptainCoder.Dungeoneering
             +-----+
             */
             MapBuilder corridorBuilder = new();
-            ConnectionPoint corridorConnection = new (new Position(0, 0), Facing.West);
-            ConnectionPoint corridorConnection2 = new (new Position(2, 0), Facing.East);
+            ConnectionPoint corridorConnection = new(new Position(0, 0), Facing.West);
+            ConnectionPoint corridorConnection2 = new(new Position(2, 0), Facing.East);
             corridorBuilder
                 .AddFloor(0, 0)
                 .AddWalls(new Position(0, 0), Facing.North, Facing.South)
@@ -243,7 +243,7 @@ namespace CaptainCoder.Dungeoneering
                 .AddFloor(2, 0)
                 .AddWalls(new Position(2, 0), Facing.North, Facing.South)
                 .AddConnectionPoint(corridorConnection)
-                .AddConnectionPoint(corridorConnection2); 
+                .AddConnectionPoint(corridorConnection2);
             Assert.AreEqual(2, corridorBuilder.UnconnectedPoints.Count);
 
             /*
@@ -255,7 +255,7 @@ namespace CaptainCoder.Dungeoneering
             */
             roomBuilder.MergeAt(roomConnection, corridorBuilder, corridorConnection);
             Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
-            Assert.AreEqual(new ConnectionPoint(new Position(4,1), Facing.East), roomBuilder.UnconnectedPoints[0]);
+            Assert.AreEqual(new ConnectionPoint(new Position(4, 1), Facing.East), roomBuilder.UnconnectedPoints[0]);
 
             /*
              +---+
@@ -266,9 +266,9 @@ namespace CaptainCoder.Dungeoneering
             */
             roomBuilder.MergeAt(new ConnectionPoint(new Position(4, 1), Facing.East), corridorBuilder, corridorConnection);
             Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
-            Assert.AreEqual(new ConnectionPoint(new Position(7,1), Facing.East), roomBuilder.UnconnectedPoints[0]);
+            Assert.AreEqual(new ConnectionPoint(new Position(7, 1), Facing.East), roomBuilder.UnconnectedPoints[0]);
 
-            
+
             /*
              +---+
              |. .|
@@ -302,7 +302,7 @@ namespace CaptainCoder.Dungeoneering
              |. . . . .$
              +---+- - -
             */
-            ConnectionPoint roomConnection = new (new Position(4, 1), Facing.East);
+            ConnectionPoint roomConnection = new(new Position(4, 1), Facing.East);
             roomBuilder
                 .AddFloor(0, 0)
                 .AddFloor(1, 0)
@@ -321,7 +321,7 @@ namespace CaptainCoder.Dungeoneering
                 .AddWalls(new Position(4, 1), Facing.South, Facing.North, Facing.East)
                 .AddConnectionPoint(roomConnection);
 
-    
+
 
             /*
              +---+
@@ -342,6 +342,61 @@ namespace CaptainCoder.Dungeoneering
             };
             string expected = string.Join("\n", rows);
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test, Timeout(5000)]
+        public void TestCanMergeAt()
+        {
+            /*
+             +$--+
+             $. .|
+             |   |
+             |. .$
+             +--$+
+            */
+            MapBuilder roomBuilder = Rooms.Room2x2;
+
+            ConnectionPoint north = new(new Position(0, 0), Facing.North);
+            ConnectionPoint west = new(new Position(0, 0), Facing.West);
+            ConnectionPoint south = new(new Position(1, 1), Facing.South);
+            ConnectionPoint east = new(new Position(1, 1), Facing.East);
+
+            // +-----+
+            // $. . .$
+            // +-----+   
+            ConnectionPoint corridorWest = new(new Position(0, 0), Facing.West);
+            ConnectionPoint corridorEast = new(new Position(2, 0), Facing.East);
+
+            Assert.False(roomBuilder.CanMergeAt(north, Corridors.EastWest, corridorEast));
+            Assert.False(roomBuilder.CanMergeAt(north, Corridors.EastWest, corridorWest));
+            Assert.False(roomBuilder.CanMergeAt(south, Corridors.EastWest, corridorEast));
+            Assert.False(roomBuilder.CanMergeAt(south, Corridors.EastWest, corridorWest));
+
+            Assert.True(roomBuilder.CanMergeAt(east, Corridors.EastWest, corridorWest));
+            Assert.False(roomBuilder.CanMergeAt(east, Corridors.EastWest, corridorEast));
+
+            Assert.True(roomBuilder.CanMergeAt(west, Corridors.EastWest, corridorEast));
+            Assert.False(roomBuilder.CanMergeAt(west, Corridors.EastWest, corridorWest));
+
+            // +$+
+            // |.|
+            // | |
+            // |.|
+            // | |
+            // |.|
+            // +$+ 
+            ConnectionPoint corridorNorth = new(new Position(0, 0), Facing.North);
+            ConnectionPoint corridorSouth = new(new Position(0, 2), Facing.South);
+
+            Assert.True(roomBuilder.CanMergeAt(north, Corridors.NorthSouth, corridorSouth));
+            Assert.False(roomBuilder.CanMergeAt(north, Corridors.NorthSouth, corridorNorth));
+            Assert.True(roomBuilder.CanMergeAt(south, Corridors.NorthSouth, corridorNorth));
+            Assert.False(roomBuilder.CanMergeAt(south, Corridors.NorthSouth, corridorSouth));
+
+            Assert.False(roomBuilder.CanMergeAt(east, Corridors.NorthSouth, corridorNorth));
+            Assert.False(roomBuilder.CanMergeAt(east, Corridors.NorthSouth, corridorSouth));
+            Assert.False(roomBuilder.CanMergeAt(west, Corridors.NorthSouth, corridorNorth));
+            Assert.False(roomBuilder.CanMergeAt(west, Corridors.NorthSouth, corridorSouth));
         }
     }
 }

@@ -14,9 +14,9 @@ namespace CaptainCoder.Dungeoneering
             Y = y;
         }
 
-        public Position North => new (X, Y + 1);
+        public Position North => new (X, Y - 1);
         public Position East => new (X + 1, Y);
-        public Position South => new (X, Y - 1);
+        public Position South => new (X, Y + 1);
         public Position West => new (X - 1, Y);
 
         public Position Neighbor(Facing facing)
@@ -56,5 +56,32 @@ namespace CaptainCoder.Dungeoneering
         }
 
         public override int GetHashCode() => HashCode.Combine(X, Y);
+
+        public static (Position, Position) FindBounds(IEnumerable<Position> positions)
+        {
+            int minX = int.MaxValue;
+            int maxX = int.MinValue;
+            int minY = int.MaxValue;
+            int maxY = int.MinValue;
+            foreach (Position p in positions)
+            {
+                minX = Math.Min(minX, p.X);
+                maxX = Math.Max(maxX, p.X);
+                minY = Math.Min(minY, p.Y);
+                maxY = Math.Max(maxY, p.Y);
+            }
+            return (new Position(minX, minY), new Position(maxX, maxY));
+        }
+
+        public static bool InBounds(Position p, (Position, Position) bounds)
+        {
+            (Position topLeft, Position bottomRight) = bounds;
+            return !(p.X < topLeft.X || p.X > bottomRight.X || p.Y < topLeft.Y || p.Y > bottomRight.Y);
+        }
+
+        public static Position operator+ (Position a, Position b) => new (a.X + b.X, a.Y + b.Y);
+        public static Position operator- (Position a, Position b) => new (a.X - b.X, a.Y - b.Y);
+
+        
     }
 }

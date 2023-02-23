@@ -154,7 +154,7 @@ namespace CaptainCoder.Dungeoneering
                 .AddWalls(new Position(1, 1), Facing.South)
                 .AddWalls(new Position(0, 1), Facing.South, Facing.West)
                 .AddConnectionPoint(roomConnection);
-
+            Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
             
 
             /*
@@ -173,10 +173,12 @@ namespace CaptainCoder.Dungeoneering
                 .AddFloor(2, 0)
                 .AddWalls(new Position(2, 0), Facing.North, Facing.South)
                 .AddConnectionPoint(corridorConnection)
-                .AddConnectionPoint(corridorConnection2);
-
+                .AddConnectionPoint(corridorConnection2); 
+            Assert.AreEqual(2, corridorBuilder.UnconnectedPoints.Count);
 
             roomBuilder.MergeAt(roomConnection, corridorBuilder, corridorConnection);
+            Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
+            Assert.AreEqual(new ConnectionPoint(new Position(4,1), Facing.East), roomBuilder.UnconnectedPoints[0]);
 
             /*
              +---+
@@ -194,6 +196,95 @@ namespace CaptainCoder.Dungeoneering
                 "     - - - ",
                 "|. . . . .|",
                 " - - - - - "
+            };
+            string expected = string.Join("\n", rows);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test, Timeout(5000)]
+        public void MapBuilderTestMergeAndBuildWith2xShortHall()
+        {
+            MapBuilder roomBuilder = new();
+
+            /*
+             +---+
+             |. .|
+             |   |
+             |. .$
+             +---+
+            */
+            ConnectionPoint roomConnection = new ConnectionPoint(new Position(1, 1), Facing.East);
+            roomBuilder
+                .AddFloor(0, 0)
+                .AddFloor(0, 1)
+                .AddFloor(1, 0)
+                .AddFloor(1, 1)
+                .AddWalls(new Position(0, 0), Facing.North, Facing.West)
+                .AddWalls(new Position(1, 0), Facing.North, Facing.East)
+                .AddWalls(new Position(1, 1), Facing.South)
+                .AddWalls(new Position(0, 1), Facing.South, Facing.West)
+                .AddConnectionPoint(roomConnection);
+            Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
+            
+
+            /*
+            +-----+
+            $. . .$
+            +-----+
+            */
+            MapBuilder corridorBuilder = new();
+            ConnectionPoint corridorConnection = new (new Position(0, 0), Facing.West);
+            ConnectionPoint corridorConnection2 = new (new Position(2, 0), Facing.East);
+            corridorBuilder
+                .AddFloor(0, 0)
+                .AddWalls(new Position(0, 0), Facing.North, Facing.South)
+                .AddFloor(1, 0)
+                .AddWalls(new Position(1, 0), Facing.North, Facing.South)
+                .AddFloor(2, 0)
+                .AddWalls(new Position(2, 0), Facing.North, Facing.South)
+                .AddConnectionPoint(corridorConnection)
+                .AddConnectionPoint(corridorConnection2); 
+            Assert.AreEqual(2, corridorBuilder.UnconnectedPoints.Count);
+
+            /*
+             +---+
+             |. .|
+             |   +-----+
+             |. . . . .$
+             +---------+
+            */
+            roomBuilder.MergeAt(roomConnection, corridorBuilder, corridorConnection);
+            Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
+            Assert.AreEqual(new ConnectionPoint(new Position(4,1), Facing.East), roomBuilder.UnconnectedPoints[0]);
+
+            /*
+             +---+
+             |. .|
+             |   +-----------+
+             |. . . . . . . .$
+             +---------------+
+            */
+            roomBuilder.MergeAt(new ConnectionPoint(new Position(4, 1), Facing.East), corridorBuilder, corridorConnection);
+            Assert.AreEqual(1, roomBuilder.UnconnectedPoints.Count);
+            Assert.AreEqual(new ConnectionPoint(new Position(7,1), Facing.East), roomBuilder.UnconnectedPoints[0]);
+
+            
+            /*
+             +---+
+             |. .|
+             |   +-----------+
+             |. . . . . . . .|
+             +---------------+
+            */
+            IMap map = roomBuilder.Build();
+
+            string actual = map.ToASCII();
+            string[] rows = {
+                " - -             ",
+                "|. .|            ",
+                "     - - - - - - ",
+                "|. . . . . . . .|",
+                " - - - - - - - - "
             };
             string expected = string.Join("\n", rows);
             Assert.AreEqual(expected, actual);

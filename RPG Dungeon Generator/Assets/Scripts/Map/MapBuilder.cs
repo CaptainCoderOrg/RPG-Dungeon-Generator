@@ -66,6 +66,7 @@ namespace CaptainCoder.Dungeoneering
         {
             
             // TODO: Check for conflicts in Map Merge
+            _unconnectedPoints.Remove(onBuilder);
             Position connectionPosition = onBuilder.Position.Neighbor(onBuilder.Direction);
             Position offset = new(connectionPosition.X + onMap.Position.X, connectionPosition.Y + onMap.Position.Y);
             MergeFloors(toMerge, offset);
@@ -196,12 +197,9 @@ namespace CaptainCoder.Dungeoneering
             List<(Position, ITile)> tiles = new();
             foreach (Position pos in _tiles.Keys)
             {
-                MutableTile tile = _tiles[pos];
-                HashSet<Facing> walls = _walls[pos];
-                tile._walls = walls;
+                MutableTile tile = new (_walls[pos]);
                 tiles.Add((pos, tile));
             }
-            
             return new Map(tiles);
         }
     }

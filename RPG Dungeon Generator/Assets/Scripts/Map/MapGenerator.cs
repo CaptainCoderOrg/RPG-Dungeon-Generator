@@ -12,29 +12,40 @@ namespace CaptainCoder.Dungeoneering
         private List<MapBuilder> _corridorOptions = new();
         private MapBuilder _builder = new();
 
-        public MapGenerator(MapBuilder startingBuilder, IEnumerable<MapBuilder> corridorOptions)
+        public MapGenerator(MapBuilder startingBuilder, IEnumerable<MapBuilder> corridorOptions) : this(startingBuilder, corridorOptions, new MapBuilder[]{}) {}
+
+        public MapGenerator(MapBuilder startingBuilder, IEnumerable<MapBuilder> corridorOptions, IEnumerable<MapBuilder> roomOptions)
         {
             Debug.Assert(startingBuilder != null);
             Debug.Assert(corridorOptions != null);
             _builder = startingBuilder;
             _corridorOptions = new(corridorOptions);
+            _roomOptions = new List<MapBuilder>(roomOptions);
         }
 
         public bool GenerateStep()
         {
             if (_builder.TryRemoveRandomConnectionPoint(out ConnectionPoint toConnect))
             {
-                var corridor = _corridorOptions
+                double chance = RNG.NextDouble();
+
+                List<MapBuilder> options = _roomOptions;
+                if (chance < .8)
+                {
+                    options = _corridorOptions;
+                }
+
+                var addition = options
                     .Where(c => _builder.CanMergeAt(toConnect, c))
                     .OrderBy(_ => RNG.Next())
                     .FirstOrDefault();
-                if (corridor == default)
+                if (addition == default)
                 {
                     _builder.AddWall(toConnect.Position, toConnect.Direction);
                 }
                 else
                 {
-                    _builder.Merge(toConnect, corridor);
+                    _builder.Merge(toConnect, addition);
                 }
                 return true;
             }

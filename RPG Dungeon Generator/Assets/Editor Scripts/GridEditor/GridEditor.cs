@@ -43,7 +43,7 @@ namespace CaptainCoder.Dungeoneering
 
         private void GenerateGrid(TextField mapOutput)
         {
-            MapGenerator generator = new(Rooms.Room2x2, Corridors.All);
+            MapGenerator generator = new(Rooms.Room2x2, Corridors.All, Rooms.All);
 
             IMap map = generator.Generate(50);
 

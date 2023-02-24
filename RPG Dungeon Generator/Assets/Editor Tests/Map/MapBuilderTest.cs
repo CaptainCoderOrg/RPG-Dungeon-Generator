@@ -408,5 +408,100 @@ namespace CaptainCoder.Dungeoneering
             Assert.True(roomBuilder.CanMergeAt(east, Corridors.EastWest));
             Assert.True(roomBuilder.CanMergeAt(west, Corridors.EastWest));
         }
+
+        [Test, Timeout(5000)]
+        public void MapBuilderTestMergeAndBuildNorth()
+        {
+
+            //  +$--+
+            //  $. .|
+            //  |   |
+            //  |. .$
+            //  +--$+
+            MapBuilder bobTehBuilder = Rooms.Room2x2;
+
+            // +$+
+            // |.|
+            // | |
+            // |.|
+            // | |
+            // |.|
+            // +$+
+            bobTehBuilder.MergeAt(new ConnectionPoint(0, 0, Facing.North), Corridors.NorthSouth, new ConnectionPoint(0, 2, Facing.South));
+
+            //    +$+
+            //-3  |.|
+            //    | |
+            //-2  |.|
+            //    | |
+            //-1  |.|
+            //    + +-+
+            //0   $. .|
+            //    |   |
+            //1   |. .$
+            //    +--$+
+
+            Assert.AreEqual(7, bobTehBuilder.Floors.Count);
+            HashSet<Position> expected = new[] { (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (0, -2), (0, -3) }.Select(p => new Position(p)).ToHashSet();
+            Assert.True(expected.SetEquals(bobTehBuilder.Floors));
+
+            Dictionary<Position, HashSet<Facing>> expectedWalls = new();
+            expectedWalls[new(0, -3)] = new() { Facing.East, Facing.West };
+            expectedWalls[new(0, -2)] = new() { Facing.East, Facing.West };
+            expectedWalls[new(0, -1)] = new() { Facing.East, Facing.West };
+            expectedWalls[new(0, 0)] = new() {  };
+            expectedWalls[new(1, 0)] = new() { Facing.North, Facing.East };
+            expectedWalls[new(0, 1)] = new() { Facing.South, Facing.West };
+            expectedWalls[new(1, 1)] = new() { };
+
+            foreach ((Position p, HashSet<Facing> walls) in expectedWalls)
+            {
+                Assert.True(walls.SetEquals(bobTehBuilder.WallsAt(p)),
+                $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", bobTehBuilder.WallsAt(p))}");
+            }
+
+            Assert.AreEqual(4, bobTehBuilder.UnconnectedPoints.Count);
+            HashSet<ConnectionPoint> expectedConnections = new()
+            {
+                new ConnectionPoint(0, -3, Facing.North),
+                new ConnectionPoint(0, 0, Facing.West),
+                new ConnectionPoint(1, 1, Facing.South),
+                new ConnectionPoint(1, 1, Facing.East),
+            };
+
+            Assert.True(expectedConnections.SetEquals(bobTehBuilder.UnconnectedPoints),
+                $"Expected {string.Join(",", expectedConnections)} but found {string.Join(",", bobTehBuilder.UnconnectedPoints)}");
+
+            //    +-+
+            //-3  |.|
+            //    | |
+            //-2  |.|
+            //    | |
+            //-1  |.|
+            //    + +-+
+            //0   |. .|
+            //    |   |
+            //1   |. .|
+            //    +---+
+            IMap builtRoom = bobTehBuilder.Build();
+
+            Dictionary<Position, HashSet<Facing>> expectedPositions = new();
+            expectedPositions[new(0, -3)] = new() { Facing.North, Facing.East, Facing.West };
+            expectedPositions[new(0, -2)] = new() { Facing.East, Facing.West };
+            expectedPositions[new(0, -1)] = new() { Facing.East, Facing.West };
+            expectedPositions[new(0, 0)] = new() { Facing.West };
+            expectedPositions[new(1, 0)] = new() { Facing.North, Facing.East };
+            expectedPositions[new(0, 1)] = new() { Facing.South, Facing.West };
+            expectedPositions[new(1, 1)] = new() { Facing.South, Facing.East };
+
+            foreach ((Position p, HashSet<Facing> walls) in expectedPositions)
+            {
+                Assert.True(builtRoom.TileAt(p).IsPassable);
+                Assert.True(walls.SetEquals(builtRoom.TileAt(p).Walls),
+                $"Walls did not match at {p}. Expected {string.Join(", ", walls)} but was {string.Join(", ", builtRoom.TileAt(p).Walls)}");
+            }
+
+
+        }
     }
 }

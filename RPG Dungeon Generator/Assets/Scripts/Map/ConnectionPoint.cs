@@ -8,6 +8,7 @@ namespace CaptainCoder.Dungeoneering
         public readonly Position Position;
         public readonly Facing Direction;
 
+        public ConnectionPoint(int x, int y, Facing direction) : this(new Position(x, y), direction) {}
         public ConnectionPoint(Position position, Facing direction)
         {
             Position = position;
@@ -27,5 +28,7 @@ namespace CaptainCoder.Dungeoneering
         {
             return HashCode.Combine(Position, Direction);
         }
+
+        public override string ToString() => $"ConnectionPoint ({Position}, {Direction})";
     }
 }

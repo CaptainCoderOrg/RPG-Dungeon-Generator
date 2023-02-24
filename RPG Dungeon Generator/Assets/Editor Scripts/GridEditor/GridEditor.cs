@@ -45,7 +45,7 @@ namespace CaptainCoder.Dungeoneering
         {
             MapGenerator generator = new(Rooms.Room2x2, Corridors.All);
 
-            IMap map = generator.Generate(10);
+            IMap map = generator.Generate(50);
 
             mapOutput.SetValueWithoutNotify(string.Join("\n", map.ToASCII()));
         }

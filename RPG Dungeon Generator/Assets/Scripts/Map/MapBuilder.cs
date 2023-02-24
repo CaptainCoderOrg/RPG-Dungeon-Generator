@@ -19,7 +19,14 @@ namespace CaptainCoder.Dungeoneering
         public Random RNG { get; set; } = new Random();
         public List<ConnectionPoint> UnconnectedPoints => _unconnectedPoints.ToList();
         public HashSet<Position> Floors => _tiles.Keys.ToHashSet();
-        public HashSet<Facing> WallsAt(Position position) => _walls[position];
+        public HashSet<Facing> WallsAt(Position position)
+        {
+            if (_walls.TryGetValue(position, out HashSet<Facing> walls))
+            {
+                return walls;
+            }
+            return new HashSet<Facing>();
+        }
 
         public bool TryFindConnectionPoint(Facing dir, out ConnectionPoint connectAt)
         {

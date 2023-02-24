@@ -8,6 +8,8 @@ namespace CaptainCoder.Dungeoneering
         public int X;
         public int Y;
         
+        public Position((int x, int y) pair) : this (pair.x, pair.y) {}
+
         public Position(int x, int y)
         {
             X = x;

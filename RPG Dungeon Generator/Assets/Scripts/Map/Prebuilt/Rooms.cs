@@ -91,8 +91,8 @@ namespace CaptainCoder.Dungeoneering
             .AddConnectionPoint(new ConnectionPoint(new Position(5, 0), Facing.North))
             .AddConnectionPoint(new ConnectionPoint(new Position(0, 1), Facing.West))
             .AddConnectionPoint(new ConnectionPoint(new Position(7, 2), Facing.East))
-            .AddConnectionPoint(new ConnectionPoint(new Position(2, 7), Facing.South))
-            .AddConnectionPoint(new ConnectionPoint(new Position(5, 7), Facing.South));
+            .AddConnectionPoint(new ConnectionPoint(new Position(2, 3), Facing.South))
+            .AddConnectionPoint(new ConnectionPoint(new Position(5, 3), Facing.South));
 
         public static MapBuilder[] All => new[] { Room2x2, Room4x4, Room8x4 };
     }

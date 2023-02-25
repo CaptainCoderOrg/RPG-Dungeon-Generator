@@ -31,7 +31,7 @@ namespace CaptainCoder.Dungeoneering
             };
 
             char[,] actual = input.Rotate90();
-            
+
             for (int r = 0; r < rotated.GetLength(0); r++)
             {
                 for (int c = 0; c < rotated.GetLength(1); c++)
@@ -39,6 +39,59 @@ namespace CaptainCoder.Dungeoneering
                     Assert.AreEqual(rotated[r, c], actual[r, c]);
                 }
             }
+        }
+
+        [Test, Timeout(5000)]
+        public void TestRotateCorner()
+        {
+            // +---+
+            // $. .$
+            // | --+
+            // |.|
+            // +$+       
+            string[] dataInput =
+            {
+                "#####",
+                "#. .$",
+                "# ###",
+                "#.#",
+                "#$#",      
+            };
+
+            string corner = string.Join("\n", dataInput);
+            string actual = corner.Rotate90();
+            
+            dataInput = new string[]{
+                "#####",
+                "$. .#",
+                "### #",
+                "  #.#",
+                "  #$#",
+            };
+            string expected = string.Join("\n", dataInput);
+            Assert.AreEqual(expected, actual);
+
+            actual = actual.Rotate90();
+            dataInput = new string[]{
+                "  #$#",
+                "  #.#",
+                "### #",
+                "$. .#",
+                "#####"
+            };
+            expected = string.Join("\n", dataInput);
+            Assert.AreEqual(expected, actual);
+
+            actual = actual.Rotate90();
+            dataInput = new string[]{
+                "#$#  ",
+                "#.#  ",
+                "# ###",
+                "#. .$",
+                "#####",
+            };
+            expected = string.Join("\n", dataInput);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace CaptainCoder.Dungeoneering
         public readonly Position Position;
         public readonly Facing Direction;
 
-        public ConnectionPoint(int x, int y, Facing direction) : this(new Position(x, y), direction) {}
+        public ConnectionPoint(int col, int row, Facing direction) : this(new Position(col, row), direction) {}
         public ConnectionPoint(Position position, Facing direction)
         {
             Position = position;

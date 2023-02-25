@@ -92,7 +92,7 @@ namespace CaptainCoder.Dungeoneering
             Position offset = onMap.Offset(onBuilder);
             foreach ((Position pos, MutableTile tile) in toMerge._tiles)
             {
-                Position newPos = new(pos.X + offset.X, pos.Y + offset.Y);
+                Position newPos = new(pos.Col + offset.Col, pos.Row + offset.Row);
                 if (_tiles.ContainsKey(newPos)) { return false; }
             }
             return true;
@@ -131,8 +131,8 @@ namespace CaptainCoder.Dungeoneering
             {
                 if (point.Equals(onMap)) { continue; }
                 Position newPos = point.Position;
-                newPos.X += offset.X;
-                newPos.Y += offset.Y;
+                newPos.Col += offset.Col;
+                newPos.Row += offset.Row;
                 ConnectionPoint newPoint = new(newPos, point.Direction);
                 AddConnectionPoint(newPoint);
             }
@@ -143,8 +143,8 @@ namespace CaptainCoder.Dungeoneering
             foreach ((Position pos, HashSet<Facing> walls) in toMerge._walls)
             {
                 Position newPos = pos;
-                newPos.X += offset.X;
-                newPos.Y += offset.Y;
+                newPos.Col += offset.Col;
+                newPos.Row += offset.Row;
                 AddWalls(newPos, walls);
             }
         }
@@ -154,8 +154,8 @@ namespace CaptainCoder.Dungeoneering
             foreach ((Position pos, MutableTile tile) in toMerge._tiles)
             {
                 Position newPos = pos;
-                newPos.X += offset.X;
-                newPos.Y += offset.Y;
+                newPos.Col += offset.Col;
+                newPos.Row += offset.Row;
 
                 //TODO Check for conflicts
                 _tiles[newPos] = tile;

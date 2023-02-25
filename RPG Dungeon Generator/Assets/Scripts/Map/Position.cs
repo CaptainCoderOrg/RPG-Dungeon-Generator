@@ -5,21 +5,21 @@ namespace CaptainCoder.Dungeoneering
 {
     public struct Position
     {
-        public int X;
-        public int Y;
+        public int Col;
+        public int Row;
         
-        public Position((int x, int y) pair) : this (pair.x, pair.y) {}
+        public Position((int col, int row) pair) : this (pair.col, pair.row) {}
 
-        public Position(int x, int y)
+        public Position(int col, int row)
         {
-            X = x;
-            Y = y;
+            Col = col;
+            Row = row;
         }
 
-        public Position North => new (X, Y - 1);
-        public Position East => new (X + 1, Y);
-        public Position South => new (X, Y + 1);
-        public Position West => new (X - 1, Y);
+        public Position North => new (Col, Row - 1);
+        public Position East => new (Col + 1, Row);
+        public Position South => new (Col, Row + 1);
+        public Position West => new (Col - 1, Row);
 
         public Position Neighbor(Facing facing)
         {
@@ -41,23 +41,23 @@ namespace CaptainCoder.Dungeoneering
         {
             get
             {
-                yield return (new Position(X, Y + 1), Facing.North);
-                yield return (new Position(X + 1, Y), Facing.East);
-                yield return (new Position(X, Y - 1), Facing.South);
-                yield return (new Position(X - 1, Y), Facing.West);
+                yield return (new Position(Col, Row + 1), Facing.North);
+                yield return (new Position(Col + 1, Row), Facing.East);
+                yield return (new Position(Col, Row - 1), Facing.South);
+                yield return (new Position(Col - 1, Row), Facing.West);
             }
         } 
 
-        public override string ToString() => $"Position ({X}, {Y})";
+        public override string ToString() => $"Position ({Col}, {Row})";
 
         public override bool Equals(object obj)
         {
             return obj is Position position &&
-                   X == position.X &&
-                   Y == position.Y;
+                   Col == position.Col &&
+                   Row == position.Row;
         }
 
-        public override int GetHashCode() => HashCode.Combine(X, Y);
+        public override int GetHashCode() => HashCode.Combine(Col, Row);
 
         public static (Position, Position) FindBounds(IEnumerable<Position> positions)
         {
@@ -67,10 +67,10 @@ namespace CaptainCoder.Dungeoneering
             int maxY = int.MinValue;
             foreach (Position p in positions)
             {
-                minX = Math.Min(minX, p.X);
-                maxX = Math.Max(maxX, p.X);
-                minY = Math.Min(minY, p.Y);
-                maxY = Math.Max(maxY, p.Y);
+                minX = Math.Min(minX, p.Col);
+                maxX = Math.Max(maxX, p.Col);
+                minY = Math.Min(minY, p.Row);
+                maxY = Math.Max(maxY, p.Row);
             }
             return (new Position(minX, minY), new Position(maxX, maxY));
         }
@@ -78,11 +78,11 @@ namespace CaptainCoder.Dungeoneering
         public static bool InBounds(Position p, (Position, Position) bounds)
         {
             (Position topLeft, Position bottomRight) = bounds;
-            return !(p.X < topLeft.X || p.X > bottomRight.X || p.Y < topLeft.Y || p.Y > bottomRight.Y);
+            return !(p.Col < topLeft.Col || p.Col > bottomRight.Col || p.Row < topLeft.Row || p.Row > bottomRight.Row);
         }
 
-        public static Position operator+ (Position a, Position b) => new (a.X + b.X, a.Y + b.Y);
-        public static Position operator- (Position a, Position b) => new (a.X - b.X, a.Y - b.Y);
+        public static Position operator+ (Position a, Position b) => new (a.Col + b.Col, a.Row + b.Row);
+        public static Position operator- (Position a, Position b) => new (a.Col - b.Col, a.Row - b.Row);
 
         
     }

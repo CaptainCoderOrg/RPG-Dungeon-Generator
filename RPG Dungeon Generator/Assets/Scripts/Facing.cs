@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace CaptainCoder.Dungeoneering
 {
     public enum Facing
@@ -7,6 +9,16 @@ namespace CaptainCoder.Dungeoneering
 
     public static class FacingExtensions
     {
+        public static IEnumerable<Facing> All
+        {
+            get
+            {
+                yield return Facing.North;
+                yield return Facing.East;
+                yield return Facing.South;
+                yield return Facing.West;
+            }            
+        }
         public static Facing RotateClockwise(this Facing facing) => (Facing)(((int)facing + 1) % 4);
         public static Facing RotateCounterClockwise(this Facing facing) => (Facing)(((int)facing + 3) % 4);
         public static Facing Rotate180(this Facing facing) => (Facing)(((int)facing + 2) % 4);

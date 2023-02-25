@@ -57,18 +57,18 @@ namespace CaptainCoder.Dungeoneering
 
         public string ToASCII()
         {
-            int width = TileBounds.bottomRight.X - TileBounds.topLeft.X + 1;
-            int height = TileBounds.bottomRight.Y - TileBounds.topLeft.Y + 1;
+            int width = TileBounds.bottomRight.Col - TileBounds.topLeft.Col + 1;
+            int height = TileBounds.bottomRight.Row - TileBounds.topLeft.Row + 1;
             char[,] output = new char[height*2 + 1, width*2 + 1];
 
 
-            int xOff = -TileBounds.topLeft.X;
-            int yOff = -TileBounds.topLeft.Y;
+            int xOff = -TileBounds.topLeft.Col;
+            int yOff = -TileBounds.topLeft.Row;
             
             foreach ((Position pos, ITile tile) in _tiles)
             {
-                int row = (pos.Y + yOff) * 2 + 1;
-                int col = (pos.X + xOff) * 2 + 1;
+                int row = (pos.Row + yOff) * 2 + 1;
+                int col = (pos.Col + xOff) * 2 + 1;
                 
                 if (tile.IsPassable)
                 {

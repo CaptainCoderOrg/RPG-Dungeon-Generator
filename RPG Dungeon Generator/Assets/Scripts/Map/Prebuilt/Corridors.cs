@@ -23,36 +23,17 @@ namespace CaptainCoder.Dungeoneering
                   "+$+",
             };
             s_NorthSouth = string.Join("\n", mapData);
-            mapData = new string[]{
-                "  +$+  ",
-                "  |.|  ",
-                "--+ +--",
-                "$. . .$",
-                "--+ +--",
-                "  |.|  ",
-                "  +$+  ",
-            };
-            s_Cross = string.Join("\n", mapData);
-
-            mapData = new string[]{
-                "+---+",
-                "|. .$",
-                "| +-+",
-                "|.|  ",
-                "+$+  ",
-            };
-            s_Corner = string.Join("\n", mapData);
+            
         }
-
-        private static MapBuilderReader s_Reader = new();
+        private readonly static string s_Path = "Assets/Resources/Grid/Corridors";
+        private readonly static MapBuilderReader s_Reader = new();
         private readonly static string s_EastWest;
-        private readonly static string s_NorthSouth;
-        private readonly static string s_Cross;
-        private readonly static string s_Corner;        
+        private readonly static string s_NorthSouth;      
         // +-----+
         // $. . .$
         // +-----+    
         public static MapBuilder EastWest => s_Reader.FromString(s_EastWest);
+        public static MapBuilder Straight => s_Reader.FromFile($"{s_Path}/Straight.txt");
 
         // +$+
         // |.|
@@ -70,17 +51,16 @@ namespace CaptainCoder.Dungeoneering
         // --+ +--
         //   |.|
         //   +$+
-        public static MapBuilder Cross => s_Reader.FromString(s_Cross);
+        public static MapBuilder Cross => s_Reader.FromFile($"{s_Path}/Cross.txt");
 
         // +---+
         // |. .$
         // | +-+
         // |.|
         // +$+
-        public static MapBuilder Corner => s_Reader.FromString(s_Corner);
+        public static MapBuilder Corner => s_Reader.FromFile($"{s_Path}/Corner.txt");
+        public static MapBuilder Tee => s_Reader.FromFile($"{s_Path}/Tee.txt");
 
-        public static MapBuilder[] All => new[] { Cross, Corner, EastWest, NorthSouth };
-
+        public static MapBuilder[] All => new[] { Cross, Straight, Tee, Corner };
     }
-
 }

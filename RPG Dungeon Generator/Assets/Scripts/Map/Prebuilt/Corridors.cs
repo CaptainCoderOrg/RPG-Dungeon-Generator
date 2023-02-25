@@ -60,7 +60,6 @@ namespace CaptainCoder.Dungeoneering
         // +$+
         public static MapBuilder Corner => s_Reader.FromFile($"{s_Path}/Corner.txt");
         public static MapBuilder Tee => s_Reader.FromFile($"{s_Path}/Tee.txt");
-
         public static MapBuilder[] All => new[] { Cross, Straight, Tee, Corner };
     }
 }

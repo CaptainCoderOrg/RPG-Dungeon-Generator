@@ -6,6 +6,7 @@
         <ui:Button text="Load" display-tooltip-when-elided="true" name="Load" />
         <ui:Button text="Generate" display-tooltip-when-elided="true" name="Generate" />
     </ui:GroupBox>
-    <ui:TextField picking-mode="Ignore" text="+-----------+&#10;|.|. . . . .|&#10;| | | |     |&#10;|.|.|.|. . .|&#10;| | |-+-----+&#10;|. .|.|&#10;+---+ |&#10;    |.|&#10;    |-|&#10;    |.|&#10;+---+ |&#10;|.|. .|&#10;+-----+" name="MapData" tooltip="This is a tooltip" multiline="true" style="height: auto; max-height: 300px;" />
+    <ui:TextField picking-mode="Ignore" text="+-----------+&#10;|.|. . . . .|&#10;| | | |     |&#10;|.|.|.|. . .|&#10;| | |-+-----+&#10;|. .|.|&#10;+---+ |&#10;    |.|&#10;    |-|&#10;    |.|&#10;+---+ |&#10;|.|. .|&#10;+-----+" name="MapData" tooltip="This is a tooltip" multiline="true" style="height: auto; max-height: 300px; font-size: 8px;" />
+    <ui:SliderInt picking-mode="Ignore" label="Generation Steps" value="100" high-value="1000" name="GenerationSteps" low-value="10" show-input-field="true" page-size="0" />
     <ui:VisualElement name="ObjectRefContainer" />
 </ui:UXML>

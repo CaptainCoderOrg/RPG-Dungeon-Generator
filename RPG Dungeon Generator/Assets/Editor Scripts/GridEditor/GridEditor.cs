@@ -37,16 +37,15 @@ namespace CaptainCoder.Dungeoneering
             // button.clicked += () => ShowValue(gridCellDatabase);
             addToSceneButton.clicked += () => AddToScene((GridCellDatabase)gridCellDatabase.value, mapData.text, (Transform)gridTarget.value);
 
+            var generationSteps = rootVisualElement.Q<SliderInt>("GenerationSteps");
             var generateButton = rootVisualElement.Q<Button>("Generate");
-            generateButton.clicked += () => GenerateGrid(mapData);
+            generateButton.clicked += () => GenerateGrid(mapData, generationSteps);
         }
 
-        private void GenerateGrid(TextField mapOutput)
+        private void GenerateGrid(TextField mapOutput, SliderInt generationSteps)
         {
             MapGenerator generator = new(Rooms.Room2x2, Corridors.All, Rooms.All);
-
-            IMap map = generator.Generate(50);
-
+            IMap map = generator.Generate(generationSteps.value);
             mapOutput.SetValueWithoutNotify(string.Join("\n", map.ToASCII()));
         }
 

@@ -59,7 +59,7 @@ namespace CaptainCoder.Dungeoneering
 
        $. . . . . . . .|
 
-       |. . . . . . . .$
+       |. . . . . . . .$ 
 
        |. . . . . . . .|
         ----$-----$----+

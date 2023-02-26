@@ -16,10 +16,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2102
     y: 52
-    width: 1335
+    width: 1338
     height: 897
   m_ShowMode: 4
-  m_Title: Test Runner
+  m_Title: Hierarchy
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,12 +43,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1335
+    width: 1338
     height: 847
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15
+  controlID: 25
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,24 +59,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TestRunnerWindow
+  m_Name: GridEditor
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 797
+    x: 800
     y: 0
     width: 538
     height: 847
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 16}
   - {fileID: 13}
   - {fileID: 12}
-  m_Selected: 2
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 2
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -96,8 +96,8 @@ MonoBehaviour:
     y: 0
     width: 185
     height: 539
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -120,7 +120,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 539
-    width: 797
+    width: 800
     height: 308
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
@@ -150,7 +150,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1335
+    width: 1338
     height: 897
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -175,7 +175,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1335
+    width: 1338
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -197,7 +197,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 877
-    width: 1335
+    width: 1338
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -220,12 +220,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 797
+    width: 800
     height: 847
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 42
+  controlID: 106
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,12 +245,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 797
+    width: 800
     height: 539
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 43
+  controlID: 107
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,7 +268,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 185
     y: 0
-    width: 612
+    width: 615
     height: 539
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -299,7 +299,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2899
+    x: 2902
     y: 82
     width: 537
     height: 826
@@ -308,7 +308,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 120
+    ID: 137
     splitterInitialOffset: 432
     currentActiveSplitter: -1
     realSizes:
@@ -375,7 +375,7 @@ MonoBehaviour:
       name: RPG Dungeon Generator
       fullName: RPG Dungeon Generator
       resultStatus: 2
-      duration: 0.1224791
+      duration: 0.3620509
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -391,7 +391,7 @@ MonoBehaviour:
       name: EditorTests.dll
       fullName: D:/git/CaptainCoderOrg/RPG-Dungeon-Generator/RPG Dungeon Generator/Library/ScriptAssemblies/EditorTests.dll
       resultStatus: 2
-      duration: 0.0530062
+      duration: 0.2548701
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -407,7 +407,7 @@ MonoBehaviour:
       name: CaptainCoder
       fullName: CaptainCoder
       resultStatus: 2
-      duration: 0.0519127
+      duration: 0.2539223
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -423,7 +423,7 @@ MonoBehaviour:
       name: Dungeoneering
       fullName: CaptainCoder.Dungeoneering
       resultStatus: 2
-      duration: 0.0514232
+      duration: 0.2533808
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -438,9 +438,9 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.ArrayExtensionTests][suite]
       name: ArrayExtensionTests
       fullName: CaptainCoder.Dungeoneering.ArrayExtensionTests
-      resultStatus: 2
-      duration: 0.0461548
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.059272
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -454,18 +454,28 @@ MonoBehaviour:
       uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/ArrayExtensionTests/[EditorTests][CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotate90]
       name: TestRotate90
       fullName: CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotate90
-      resultStatus: 2
-      duration: 0.0185261
-      messages: 'System.IndexOutOfRangeException : Index was outside the bounds of
-        the array.'
+      resultStatus: 1
+      duration: 0.0289412
+      messages: 
       output: 
-      stacktrace: "  at CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotate90
-        () [0x00039] in D:\\git\\CaptainCoderOrg\\RPG-Dungeon-Generator\\RPG Dungeon
-        Generator\\Assets\\Editor Tests\\ArrayExtensionTests.cs:39 \r\n  at (wrapper
-        managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n 
-        at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
-        invokeAttr, System.Reflection.Binder binder, System.Object[] parameters,
-        System.Globalization.CultureInfo culture) [0x0006a] in <75633565436c42f0a6426b33f0132ade>:0 "
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.ArrayExtensionTests][suite]
+    - id: 1003
+      uniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/ArrayExtensionTests/[EditorTests][CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotateCorner]
+      name: TestRotateCorner
+      fullName: CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotateCorner
+      resultStatus: 1
+      duration: 0.0037488
+      messages: 
+      output: 
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -479,7 +489,7 @@ MonoBehaviour:
       name: MapBuilderReaderTest
       fullName: CaptainCoder.Dungeoneering.MapBuilderReaderTest
       resultStatus: 1
-      duration: 0.0793712
+      duration: 0.0467146
       messages: 
       output: 
       stacktrace: 
@@ -495,7 +505,7 @@ MonoBehaviour:
       name: TestRead2x2Room
       fullName: CaptainCoder.Dungeoneering.MapBuilderReaderTest.TestRead2x2Room
       resultStatus: 1
-      duration: 0.0551831
+      duration: 0.0233326
       messages: 
       output: 
       stacktrace: 
@@ -512,7 +522,7 @@ MonoBehaviour:
       name: MapBuilderTest
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest
       resultStatus: 1
-      duration: 0.0858166
+      duration: 0.0654848
       messages: 
       output: 
       stacktrace: 
@@ -528,7 +538,7 @@ MonoBehaviour:
       name: MapBuilderTest2x2Room
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTest2x2Room
       resultStatus: 1
-      duration: 0.0386293
+      duration: 0.0115494
       messages: 
       output: 
       stacktrace: 
@@ -545,7 +555,7 @@ MonoBehaviour:
       name: MapBuilderTestBuildWithShortHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestBuildWithShortHall
       resultStatus: 1
-      duration: 0.0034243
+      duration: 0.00238
       messages: 
       output: 
       stacktrace: 
@@ -562,7 +572,7 @@ MonoBehaviour:
       name: MapBuilderTestMergeAndBuildAtShortHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildAtShortHall
       resultStatus: 1
-      duration: 0.0054123
+      duration: 0.0039855
       messages: 
       output: 
       stacktrace: 
@@ -579,7 +589,7 @@ MonoBehaviour:
       name: MapBuilderTestMergeAndBuildNorth
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildNorth
       resultStatus: 1
-      duration: 0.0126394
+      duration: 0.0100913
       messages: 
       output: 
       stacktrace: 
@@ -596,7 +606,7 @@ MonoBehaviour:
       name: MapBuilderTestMergeAndBuildWith2xShortHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAndBuildWith2xShortHall
       resultStatus: 1
-      duration: 0.0014072
+      duration: 0.0016362
       messages: 
       output: 
       stacktrace: 
@@ -613,7 +623,7 @@ MonoBehaviour:
       name: MapBuilderTestMergeAtWithStraightHall
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.MapBuilderTestMergeAtWithStraightHall
       resultStatus: 1
-      duration: 0.0044819
+      duration: 0.0050443
       messages: 
       output: 
       stacktrace: 
@@ -630,7 +640,7 @@ MonoBehaviour:
       name: TestCanMergeAt
       fullName: CaptainCoder.Dungeoneering.MapBuilderTest.TestCanMergeAt
       resultStatus: 1
-      duration: 0.0028282
+      duration: 0.003752
       messages: 
       output: 
       stacktrace: 
@@ -647,7 +657,7 @@ MonoBehaviour:
       name: MapGeneratorTest
       fullName: CaptainCoder.Dungeoneering.MapGeneratorTest
       resultStatus: 2
-      duration: 0.0363538
+      duration: 0.0429799
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -663,11 +673,11 @@ MonoBehaviour:
       name: MapGeneratorTestSimpleGenerate
       fullName: CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerate
       resultStatus: 2
-      duration: 0.0090615
+      duration: 0.0165993
       messages: "  Expected: 7\r\n  But was:  4\r\n"
       output: 
       stacktrace: 'at CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerate
-        () [0x0013b] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon
+        () [0x0013e] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon
         Generator\Assets\Editor Tests\Map\MapGeneratorTest.cs:62
 
 '
@@ -684,12 +694,12 @@ MonoBehaviour:
       name: MapGeneratorTestSimpleGenerateWithAdditionalConnections
       fullName: CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerateWithAdditionalConnections
       resultStatus: 2
-      duration: 0.0107658
+      duration: 0.0046793
       messages: "  Expected: 1\r\n  But was:  0\r\n"
       output: 
       stacktrace: 'at CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerateWithAdditionalConnections
-        () [0x0047c] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon
-        Generator\Assets\Editor Tests\Map\MapGeneratorTest.cs:173
+        () [0x002a0] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon
+        Generator\Assets\Editor Tests\Map\MapGeneratorTest.cs:144
 
 '
       notRunnable: 0
@@ -705,7 +715,7 @@ MonoBehaviour:
       name: MapTest
       fullName: CaptainCoder.Dungeoneering.MapTest
       resultStatus: 1
-      duration: 0.0180994
+      duration: 0.0323696
       messages: 
       output: 
       stacktrace: 
@@ -721,7 +731,7 @@ MonoBehaviour:
       name: Test1x1RoomToASCII
       fullName: CaptainCoder.Dungeoneering.MapTest.Test1x1RoomToASCII
       resultStatus: 1
-      duration: 0.00268
+      duration: 0.0018213
       messages: 
       output: 
       stacktrace: 
@@ -738,7 +748,7 @@ MonoBehaviour:
       name: Test2x2RoomToASCII
       fullName: CaptainCoder.Dungeoneering.MapTest.Test2x2RoomToASCII
       resultStatus: 1
-      duration: 0.0006932
+      duration: 0.0006041
       messages: 
       output: 
       stacktrace: 
@@ -755,7 +765,7 @@ MonoBehaviour:
       name: TestRoomWithHallToASCII
       fullName: CaptainCoder.Dungeoneering.MapTest.TestRoomWithHallToASCII
       resultStatus: 1
-      duration: 0.00085
+      duration: 0.0006252
       messages: 
       output: 
       stacktrace: 
@@ -767,25 +777,19 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1007
       parentUniqueId: EditorTests.dll/CaptainCoder/Dungeoneering/[EditorTests][CaptainCoder.Dungeoneering.MapTest][suite]
-    m_ResultText: "TestRotate90 (0.019s)\n---\nSystem.IndexOutOfRangeException :
-      Index was outside the bounds of the array.\n---\nat CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotate90
-      () [0x00039] in D:\\git\\CaptainCoderOrg\\RPG-Dungeon-Generator\\RPG Dungeon
-      Generator\\Assets\\Editor Tests\\ArrayExtensionTests.cs:39 \r\n  at (wrapper
-      managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n 
-      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
-      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
-      culture) [0x0006a] in <75633565436c42f0a6426b33f0132ade>:0"
-    m_ResultStacktrace: "  at CaptainCoder.Dungeoneering.ArrayExtensionTests.TestRotate90
-      () [0x00039] in D:\\git\\CaptainCoderOrg\\RPG-Dungeon-Generator\\RPG Dungeon
-      Generator\\Assets\\Editor Tests\\ArrayExtensionTests.cs:39 \r\n  at (wrapper
-      managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n 
-      at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags
-      invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo
-      culture) [0x0006a] in <75633565436c42f0a6426b33f0132ade>:0 "
+    m_ResultText: "MapGeneratorTestSimpleGenerate (0.017s)\n---\nExpected: 7\r\n 
+      But was:  4\n---\nat CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerate
+      () [0x0013e] in D:\\git\\CaptainCoderOrg\\RPG-Dungeon-Generator\\RPG Dungeon
+      Generator\\Assets\\Editor Tests\\Map\\MapGeneratorTest.cs:62"
+    m_ResultStacktrace: 'at CaptainCoder.Dungeoneering.MapGeneratorTest.MapGeneratorTestSimpleGenerate
+      () [0x0013e] in D:\git\CaptainCoderOrg\RPG-Dungeon-Generator\RPG Dungeon Generator\Assets\Editor
+      Tests\Map\MapGeneratorTest.cs:62
+
+'
     m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 922fb721
-      m_LastClickedID: 565653394
+      scrollPos: {x: 0, y: 11}
+      m_SelectedIDs: aae1c9f7
+      m_LastClickedID: -137764438
       m_ExpandedIDs: 883e2d85c242239316d1c8a4d37774c61a5f65d2be413a1133c7f81c0c24cb1ffa4cd628ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -832,7 +836,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2899
+    x: 2902
     y: 82
     width: 537
     height: 826
@@ -890,7 +894,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2102
     y: 621
-    width: 796
+    width: 799
     height: 287
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -921,10 +925,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 25}
-    m_SelectedIDs: a8680000
-    m_LastClickedID: 26792
-    m_ExpandedIDs: 00000000a0680000a2680000a4680000a6680000a868000000ca9a3b
+    scrollPos: {x: 0, y: 45}
+    m_SelectedIDs: b4ed0000
+    m_LastClickedID: 60852
+    m_ExpandedIDs: 00000000aced0000aeed0000b0ed0000b2ed0000b4ed000022ee000024ee000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -952,7 +956,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a0680000a2680000a4680000a6680000a8680000
+    m_ExpandedIDs: 00000000aced0000aeed0000b0ed0000b2ed0000b4ed0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -979,7 +983,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300006cc20000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1028,10 +1032,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2845
-    y: 81
-    width: 593
-    height: 862
+    x: 2900
+    y: 82
+    width: 536
+    height: 826
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1042,7 +1046,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 381366
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -1082,7 +1086,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 88b7feff56b9feffa6f1ffff6af3ffff3ef5ffff02f7ffffc8f8ffff16fbffff
+      m_ExpandedIDs: f89af4ff529bf4ffea66fbff3c67fbff5469fbff68afffffa6afffff14c5ffff28d9ffff68dafffff0e7fffff4e7ffffccecffffeaecffff40eefffff2f0ffff08f4ffffccf5fffff2f6ffffc2f8ffff16fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1128,7 +1132,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2287
     y: 82
-    width: 610
+    width: 613
     height: 518
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1364,9 +1368,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 113.47847, y: 136.77023, z: 91.65597}
+    m_Target: {x: 81.40141, y: -39.74878, z: 92.16036}
     speed: 2
-    m_Value: {x: 113.47847, y: 136.77023, z: 91.65597}
+    m_Value: {x: 81.40141, y: -39.74878, z: 92.16036}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1413,13 +1417,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.4338474, y: -0.56259215, z: 0.4469423, w: 0.5438778}
+    m_Target: {x: 0.45843259, y: -0.54098237, z: 0.46809763, w: 0.5276071}
     speed: 2
-    m_Value: {x: 0.43378365, y: -0.5625095, z: 0.44687662, w: 0.54379785}
+    m_Value: {x: 0.45695612, y: -0.5424795, z: 0.4693988, w: 0.525901}
   m_Size:
-    m_Target: 9.255149
+    m_Target: 109.29282
     speed: 2
-    m_Value: 9.255149
+    m_Value: 109.29282
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1464,10 +1468,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2313
-    y: 81
-    width: 670
-    height: 577
+    x: 2287
+    y: 82
+    width: 611
+    height: 518
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1478,7 +1482,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 670, y: 556}
+  m_TargetSize: {x: 611, y: 497}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1493,10 +1497,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -335
-    m_HBaseRangeMax: 335
-    m_VBaseRangeMin: -278
-    m_VBaseRangeMax: 278
+    m_HBaseRangeMin: -305.5
+    m_HBaseRangeMax: 305.5
+    m_VBaseRangeMin: -248.5
+    m_VBaseRangeMax: 248.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1514,23 +1518,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 670
-      height: 556
+      width: 611
+      height: 497
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 335, y: 278}
+    m_Translation: {x: 305.5, y: 248.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -335
-      y: -278
-      width: 670
-      height: 556
+      x: -305.5
+      y: -248.5
+      width: 611
+      height: 497
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 670, y: 577}
+  m_LastWindowPixelSize: {x: 611, y: 518}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
@@ -1558,7 +1562,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2102
     y: 621
-    width: 796
+    width: 799
     height: 287
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

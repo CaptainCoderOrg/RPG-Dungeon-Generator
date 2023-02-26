@@ -6,6 +6,8 @@ namespace CaptainCoder.Dungeoneering
 {
     public class MapBuilder
     {
+        private static int s_NextID;
+        private string _name;
         private readonly Dictionary<Position, MutableTile> _tiles = new();
         private readonly Dictionary<Position, HashSet<Facing>> _walls = new();
         // TODO: Priority Queue would be more efficient for _unconnectedPoints
@@ -15,10 +17,25 @@ namespace CaptainCoder.Dungeoneering
         // O(logn) - for adding/removing to a priority queue
         private readonly List<ConnectionPoint> _unconnectedPoints = new();
         private readonly HashSet<ConnectionPoint> _connectionPoints = new();
+
+        public MapBuilder() : this("Unnamed") {}
+
+        public MapBuilder(string name)
+        {
+            ID = s_NextID++;
+            _name = $"{name}_{ID}";
+        }
         public bool HasConnectionPoint => _unconnectedPoints.Count > 0;
         public Random RNG { get; set; } = new Random();
         public List<ConnectionPoint> UnconnectedPoints => _unconnectedPoints.ToList();
         public HashSet<Position> Floors => _tiles.Keys.ToHashSet();
+        public int ID { get; private set; }
+        public string Name 
+        { 
+            get => _name; 
+            set => _name = $"{value}_{ID}";
+        }
+        
         public HashSet<Facing> WallsAt(Position position)
         {
             if (_walls.TryGetValue(position, out HashSet<Facing> walls))
@@ -58,13 +75,28 @@ namespace CaptainCoder.Dungeoneering
             return this;
         }
 
-        public bool CanMergeAt(ConnectionPoint point, MapBuilder other)
+        public bool CanMergeAt(ConnectionPoint onBuilder, MapBuilder toExtend)
         {
-            foreach (ConnectionPoint otherPoint in other._unconnectedPoints)
+            foreach (ConnectionPoint otherPoint in toExtend._unconnectedPoints)
             {
-                if (CanMergeAt(point, other, otherPoint)) { return true; }
+                if (CanMergeAt(onBuilder, toExtend, otherPoint)) 
+                { 
+                    return true; 
+                }
             }
             return false;
+        }
+
+        public bool CanMergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onToMerge)
+        {
+            if (onBuilder.Direction.Rotate180() != onToMerge.Direction) { return false; }
+            Position offset = onToMerge.Offset(onBuilder);
+            foreach ((Position pos, MutableTile tile) in toMerge._tiles)
+            {
+                Position newPos = new(pos.Col + offset.Col, pos.Row + offset.Row);
+                if (_tiles.ContainsKey(newPos)) { return false; }
+            }
+            return true;
         }
 
         /// <summary>
@@ -86,17 +118,7 @@ namespace CaptainCoder.Dungeoneering
             return true;
         }
 
-        public bool CanMergeAt(ConnectionPoint onBuilder, MapBuilder toMerge, ConnectionPoint onMap)
-        {
-            if (onBuilder.Direction.Rotate180() != onMap.Direction) { return false; }
-            Position offset = onMap.Offset(onBuilder);
-            foreach ((Position pos, MutableTile tile) in toMerge._tiles)
-            {
-                Position newPos = new(pos.Col + offset.Col, pos.Row + offset.Row);
-                if (_tiles.ContainsKey(newPos)) { return false; }
-            }
-            return true;
-        }
+        
 
         public MapBuilder Merge(ConnectionPoint onBuilder, MapBuilder toMerge)
         {

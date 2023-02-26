@@ -8,11 +8,11 @@ namespace CaptainCoder.Dungeoneering
     public class MapBuilderReader
     {
 
-        private readonly HashSet<char> _wallChars = "|-+".ToHashSet();
-        private readonly HashSet<char> _connectionChars = "$".ToHashSet();
-        private readonly HashSet<char> _floorChars = ".".ToHashSet();
+        private readonly HashSet<char> _wallChars;
+        private readonly HashSet<char> _connectionChars;
+        private readonly HashSet<char> _floorChars;
 
-        public MapBuilderReader() : this("|-+", "$", ".") { }
+        public MapBuilderReader() : this("|-+", "$", ".A") { }
 
         public MapBuilderReader(string walls, string connections, string floors)
         {

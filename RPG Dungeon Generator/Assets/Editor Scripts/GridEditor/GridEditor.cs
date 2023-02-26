@@ -44,7 +44,27 @@ namespace CaptainCoder.Dungeoneering
 
         private void GenerateGrid(TextField mapOutput, SliderInt generationSteps)
         {
-            MapGenerator generator = new(Rooms.Room2x2, Corridors.All, Rooms.All);
+            List<(MapBuilder options, float weight)> options = new ()
+            {
+                // (Rooms.Room2x2, 1f),
+                // (Rooms.Room4x4, 3f),
+                // (Rooms.Room8x4, 1f),
+                (Rooms.URoom, 10f),
+                (Rooms.Pillar3x3, 10f),
+                (Corridors.EastWest, 1f),
+                (Corridors.NorthSouth, 1f),
+                (Corridors.Cross, 3f),
+                (Corridors.CornerTL, 5f),
+                (Corridors.CornerTR, 5f),
+                (Corridors.CornerBL, 5f),
+                (Corridors.CornerBR, 5f),
+                (Corridors.TeeEast, 3f),
+                (Corridors.TeeNorth, 3f),
+                (Corridors.TeeSouth, 3f),
+                (Corridors.TeeWest, 3f),
+            };
+            IGeneratorTable table = new SimpleGeneratorTable(options);
+            MapGenerator generator = new(Rooms.Room2x2, table);
             IMap map = generator.Generate(generationSteps.value);
             mapOutput.SetValueWithoutNotify(string.Join("\n", map.ToASCII()));
         }

@@ -8,44 +8,26 @@ namespace CaptainCoder.Dungeoneering
     public class MapGenerator
     {
         public Random RNG { get; set; } = new();
-        private List<MapBuilder> _roomOptions = new();
-        private List<MapBuilder> _corridorOptions = new();
+        private readonly IGeneratorTable _table;
         private MapBuilder _builder = new();
 
-        public MapGenerator(MapBuilder startingBuilder, IEnumerable<MapBuilder> corridorOptions) : this(startingBuilder, corridorOptions, new MapBuilder[]{}) {}
-
-        public MapGenerator(MapBuilder startingBuilder, IEnumerable<MapBuilder> corridorOptions, IEnumerable<MapBuilder> roomOptions)
+        public MapGenerator(MapBuilder startingBuilder, IGeneratorTable table)  
         {
-            Debug.Assert(startingBuilder != null);
-            Debug.Assert(corridorOptions != null);
             _builder = startingBuilder;
-            _corridorOptions = new(corridorOptions);
-            _roomOptions = new List<MapBuilder>(roomOptions);
+            _table = table;
         }
 
         public bool GenerateStep()
         {
             if (_builder.TryRemoveRandomConnectionPoint(out ConnectionPoint toConnect))
             {
-                double chance = RNG.NextDouble();
-
-                List<MapBuilder> options = _roomOptions;
-                if (chance < .8)
+                if(_table.Next(_builder, toConnect, out GeneratorResult result))
                 {
-                    options = _corridorOptions;
-                }
-
-                var addition = options
-                    .Where(c => _builder.CanMergeAt(toConnect, c))
-                    .OrderBy(_ => RNG.Next())
-                    .FirstOrDefault();
-                if (addition == default)
-                {
-                    _builder.AddWall(toConnect.Position, toConnect.Direction);
+                    _builder.MergeAt(result.OnMainMap, result.ExtensionMap, result.OnExtension);
                 }
                 else
                 {
-                    _builder.Merge(toConnect, addition);
+                    _builder.AddWall(toConnect.Position, toConnect.Direction);
                 }
                 return true;
             }

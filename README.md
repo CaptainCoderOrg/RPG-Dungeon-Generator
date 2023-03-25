@@ -44,4 +44,4 @@ Using the GridEditor window, you can specify how each symbol should be translate
 
 ![3D Dungeon](imgs/3d_dungeon.png)
 
-Lastly, we wrote a very simple script to walk about in playmode: [Video](imgs/Video.mp4)
+Lastly, we wrote a very simple script to walk about in playmode: [Video](https://drive.google.com/file/d/191wrzkpXcHYDsKQwTNDLA7jnHIlCfMkN/view)
